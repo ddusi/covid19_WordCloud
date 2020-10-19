@@ -1,0 +1,6 @@
+body {
+    background-color: mintcream;
+}
+A:VISITED {text-decoration: none; color: #646464;}
+A:ACTIVE {text-decoration: none; color: #646464;}
+A:HOVER {text-decoration: black; color: black;}

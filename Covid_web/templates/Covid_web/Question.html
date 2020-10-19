@@ -1,0 +1,15 @@
+<h1>QUESTION : <strong style="color:maroon">{{ question.question_text }}</strong></h1>
+{% if answers %}
+    {% for answer in answers %}
+        <ul>{{ answer.answer_text }}</ul>
+    {% endfor %}
+{% endif %}
+<form action="{% url 'covid:answer' question.id%}" method="post">
+    {% csrf_token %}
+    <div>
+        <label for="content">Add Answer</label><br>
+      <textarea name="answer_text" id="answer_text" cols="40" rows="-1"></textarea>
+    </div>
+    <br>
+    <input type="submit" value="add answer">
+</form>
