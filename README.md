@@ -1,7 +1,6 @@
-# covid_WordCloud
+# covid19_WordCloud
+코로나 관련된 기사들의 데이터를 모아 분석하여 word cloud로 시각화, NLTK를 통해 자연어처리로 원하는 데이터로 처리합니다. 
 
-장연주님 외주 설명 및 변경점.
-공공데이터 API를 내부 DRF API서버와 연동하여 데이터 가공 후 원하는 정보만 화면에 출력하는 작업입니다.
 
 ## environment
 - python==3.7
