@@ -6,12 +6,17 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0006_answer'),
+        ('Covid_web', '0004_delete_answer_and_remake'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
             name='answer',
             options={'ordering': ['id']},
+        ),
+        migrations.RenameField(
+            model_name='answer',
+            old_name='answer',
+            new_name='answer_text',
         ),
     ]
