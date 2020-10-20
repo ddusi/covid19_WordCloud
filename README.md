@@ -2,6 +2,13 @@
 코로나 관련된 기사들의 데이터를 모아 분석하여 word cloud로 시각화, NLTK를 통해 자연어처리로 원하는 데이터로 처리합니다. 
 
 
+## PR Form
+Feature : new function develop 새로운 기능 개발 <br>
+Update : old function fix and upgrade 기존 기능 향상 <br>
+Bug : bug fix 버그 수정 <br>
+Enhancement : New feature or request 기능 요청, 제안 <br>
+
+
 ## environment
 - python==3.7
 - django==3.1.2
