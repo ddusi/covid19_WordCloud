@@ -7,8 +7,25 @@ Feature : new function develop 새로운 기능 개발 <br>
 Update : old function fix and upgrade 기존 기능 향상 <br>
 Bug : bug fix 버그 수정 <br>
 Enhancement : New feature or request 기능 요청, 제안 <br>
+Documentation : 문서화 <br>
+태크를 꼭 달아주세요.<br>
+<br>
+ex)React is not executed in the django (tag bug)
+<br>
 
+## Branch Policy
+master - develop - feature <br>
+master : 최종 배포할 버전 <br>
+develop : master로 병합하기 전 최종 확인 단계, 및 새로 개발할 feature의 root브랜치 <br>
+feature : 개발을 시작 할 시 생성될 브랜치 <br>
+<br>
+여기서 저희는 세가지만 사용합니다. <br>
 
+ex) feature/bootstarp_flex_apply <br>
+ex) feature/word_cloud_form_change <br>
+[참고 정보 git flow](https://woowabros.github.io/experience/2017/10/30/baemin-mobile-git-branch-strategy.html)
+
+<br>
 ## environment
 - python==3.7
 - django==3.1.2
