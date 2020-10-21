@@ -47,8 +47,9 @@ cd covid_wordCloud
 
 3. 라이브러리들 설치
 ```
+pip install cloudworld
 pip install -r requirements.txt
-nltk.download()
+python -m nltk.downloader all
 ```
 
 4. django 실행
