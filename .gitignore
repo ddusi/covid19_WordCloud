@@ -1,1 +1,4 @@
 /.idea/
+__pycache__
+article.csv
+Covid_web/static/covid_WordCloud.jpg
