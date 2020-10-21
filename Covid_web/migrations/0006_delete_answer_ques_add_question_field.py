@@ -7,14 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0009_remove_answer_ques'),
+        ('Covid_web', '0005_rename_answer_text_and_add_model_options'),
     ]
 
     operations = [
+        migrations.RemoveField(
+            model_name='answer',
+            name='ques',
+        ),
         migrations.AddField(
             model_name='answer',
             name='question',
-            field=models.ForeignKey(default=2, on_delete=django.db.models.deletion.CASCADE, related_name='answers', to='Covid_web.question'),
+            field=models.ForeignKey(default=2, on_delete=django.db.models.deletion.CASCADE, related_name='answers',
+                                    to='Covid_web.question'),
             preserve_default=False,
         ),
     ]

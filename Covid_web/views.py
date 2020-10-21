@@ -34,7 +34,7 @@ def make():
     pre = precaution()
     Korea, World = Covid_confirmed()
     timer.start()
-make()
+# make()
 
 def QnA(request):
     questions = Question.objects
@@ -84,3 +84,5 @@ def basic_information(request):
         'cont' : cont[1:-21]
     }
     return render(request, 'Covid_web/basic_information.html', context)
+
+

@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0003_auto_20200901_1928'),
+        ('Covid_web', '0002_create_answer_table'),
     ]
 
     operations = [
@@ -19,5 +19,10 @@ class Migration(migrations.Migration):
             model_name='question',
             name='updated_at',
             field=models.DateTimeField(auto_now=True),
+        ),
+        migrations.AlterField(
+            model_name='question',
+            name='created_at',
+            field=models.DateTimeField(auto_now_add=True),
         ),
     ]
