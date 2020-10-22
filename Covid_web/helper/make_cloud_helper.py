@@ -53,4 +53,3 @@ def make_cloud_helper(path):
 	# plt.savefig("Covid_web/static/" + path)
 	wc.to_file("Covid_web/static/" + path)
 
-# wc.to_file("covid_new.png")
