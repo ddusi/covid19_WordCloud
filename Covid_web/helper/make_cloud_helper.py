@@ -14,7 +14,6 @@ from wordcloud import WordCloud, ImageColorGenerator
 def make_cloud_helper(path):
 	os.system('scrapy runspider Covid_web/scrapy/covid/spiders/covid_spider.py')
 	# text = open(os.path.join('article.txt'), encoding="utf-8").read()
-
 	article_pd = pd.read_csv('article.csv')
 
 	# string preprocessing
@@ -50,6 +49,5 @@ def make_cloud_helper(path):
 	plt.figure(figsize=(15, 15))
 	plt.imshow(wc, interpolation="bilinear")
 	plt.axis('off')
-	# plt.savefig("Covid_web/static/" + path)
 	wc.to_file("Covid_web/static/" + path)
 
