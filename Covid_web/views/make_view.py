@@ -1,4 +1,5 @@
 from ..helper.get_info import basic,precaution, Covid_confirmed, Make_Cloud
+from ..helper.make_cloud_helper import make_cloud_helper
 import threading
 import pandas as pd
 
@@ -15,10 +16,10 @@ def make():
     timer = threading.Timer(600,make)
 
     if flag:
-        Make_Cloud('covid_WordCloud.jpg')
+        make_cloud_helper('covid_WordCloud.png')
         flag = False
     else:
-        Make_Cloud('covid_WordCloud1.jpg')
+        make_cloud_helper('covid_WordCloud1.png')
         flag = True
     article_pd = pd.read_csv('article.csv')
     article = article_pd.to_dict()
@@ -26,4 +27,4 @@ def make():
     pre = precaution()
     Korea, World = Covid_confirmed()
     timer.start()
-# make()
+make()
