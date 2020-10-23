@@ -1,5 +1,5 @@
 <h1>QnA</h1>
-<a href="new">add question</a>
+<a href="new-question">add question</a>
 <br>
 <br>
 <br>
@@ -7,7 +7,7 @@
 {% if questions %}
 {% for question in questions.all%}
         <div>
-            <h3><ul><a href="{% url 'covid:ques' question.id%}">{{question.question_text}}</a></ul></h3>
+            <h3><ul><a href="{% url 'covid:question' question.id%}">{{question.question_text}}</a></ul></h3>
         </div>
     {% endfor %}
 {% else %}
@@ -15,4 +15,4 @@
 {% endif %}
 <br>
 <br>
-<h3><a href="{% url 'covid:index' %}">Go Home</a></h3>
+<h3><a href="{% url 'covid:home' %}">Go Home</a></h3>
