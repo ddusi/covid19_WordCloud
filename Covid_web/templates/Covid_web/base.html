@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COVID-19 Word Cloud</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{% static 'css/style.css' %}"
+    />
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__navigation">
+        <div class="header__website-title--container">
+          <h1 class="header__website-title">COVID-19 Word Cloud</h1>
+        </div>
+        <ul class="navigation__links--container">
+          <li class="navigation__link">
+            <a href="{% url 'covid:news' %}">News</a>
+          </li>
+          <li class="navigation__link">
+            <a href="{% url 'covid:covid-info' %}">Info</a>
+          </li>
+          <li class="navigation__link">
+            <a href="{% url 'covid:precautions' %}">Precautions</a>
+          </li>
+          <li class="navigation__link">
+            <a href="{% url 'covid:qna' %}">QnA</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section role="main" class="main">
+      {% block content %} {% endblock %}
+    </section>
+    <footer class="footer">
+      <div class="footer--wrapper">
+        <div class="footer__website-title--container">
+          <h3 class="footer__website-title">COVID-19 Word Cloud</h3>
+        </div>
+        <div class="footer__contacts--container">
+          <ion-icon name="mail-outline"></ion-icon>
+          <ion-icon name="logo-facebook"></ion-icon>
+          <ion-icon name="logo-github"></ion-icon>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

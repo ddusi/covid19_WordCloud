@@ -1,4 +1,6 @@
 /.idea/
 __pycache__
 article.csv
-Covid_web/static/covid_WordCloud.jpg
+Covid_web/static/covid_WordCloud.png
+Covid_web/static/covid_WordCloud1.png
+Covid_web/static/covid_person_new.jpg

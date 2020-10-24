@@ -1,27 +1,25 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        .hyperlink{
-            font-size: 23px;
-            color: dimgrey;
-            text-align: right;
-            line-height:30px;
-        }   
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 style="font-size: 50px;">표</h1>
-    </div>
-    <h3 class="hyperlink"><a href="{% url 'covid:news' %}">News</a></h3>
-    <h3 class="hyperlink"><a href="{% url 'covid:covid-info' %}">Basic Information</a></h3>
-    <h3 class="hyperlink"><a href="{% url 'covid:precautions' %}">See Precautions</a></h3>
-    <h3 class="hyperlink"><a href="{% url 'covid:qna' %}">See QnA</a></h3>
-</body>
-</html>
+{% extends 'Covid_web/base.html' %} {% block content %}
+<div class="main__welcome-message--container">
+  <h2 class="welcome-message__title">Welcome to COVID-19 Word Cloud</h2>
+  <p class="welcome-message__body--upper">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat totam quae
+    et, beatae asperiores quaerat eveniet fuga consectetur nisi, quam, facilis
+    repellat! Quasi dolor dolorem quidem ipsam velit. Ad totam eveniet, nam
+    dolorum ex cum molestias iste voluptatibus aspernatur minima?
+  </p>
+  <p class="welcome-message__body--lower">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat totam quae
+    et, beatae asperiores quaerat eveniet fuga consectetur nisi, quam, facilis
+    repellat! Quasi dolor dolorem quidem ipsam velit. Ad totam eveniet, nam
+    dolorum ex cum molestias iste voluptatibus aspernatur minima?
+  </p>
+  <button class="welcome-message__link-news">News</button>
+</div>
+<div class="main__data-visualization--container">
+  <div class="data-visualization__box1--container">Chart/Map 1</div>
+  <div class="data-visualization__box2--container">Chart/Map 2</div>
+  <div class="data-visualization__link-status--container">
+    <button class="data-visualization__link-status">News</button>
+  </div>
+</div>
+{% endblock %}
