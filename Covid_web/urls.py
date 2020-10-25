@@ -12,4 +12,6 @@ urlpatterns = [
     # path('<int:question_id>/', views.question_read, name='question'),
     # path('<int:question_id>/', views.answer, name='answer'),
     path('precautions/', QuestionCRUDView.as_view(), name='precautions'),
+    path('test/', views.precautions, name='precautions'),
+
 ]

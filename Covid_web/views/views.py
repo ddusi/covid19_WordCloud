@@ -18,7 +18,7 @@ World = {}
 
 def make():
 	global flag, cont, article, pre, Korea, World
-	timer = threading.Timer(30, make)
+	timer = threading.Timer(600, make)
 
 	if flag:
 		make_cloud_helper('covid_WordCloud.png')
@@ -34,7 +34,7 @@ def make():
 	timer.start()
 
 
-# make()
+make()
 
 
 def home(request):
@@ -79,14 +79,14 @@ def covid_info(request):
 # 	return render(request, 'covid_web/new_question.html')
 
 
-# def precautions(request):
-# 	global pre, Korea, World
-# 	context = {
-# 		"pre": pre,
-# 		'Korea': Korea,
-# 		'World': World,
-# 	}
-# 	return render(request, 'covid_web/precautions.html', context)
+def precautions(request):
+	global pre, Korea, World
+	context = {
+		"pre": pre,
+		'Korea': Korea,
+		'World': World,
+	}
+	return render(request, 'covid_web/precautions__.html', context)
 
 
 # def test(request):
