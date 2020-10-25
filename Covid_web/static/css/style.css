@@ -58,8 +58,8 @@ body {
 section[role='main'] {
   width: 90%;
   max-width: 1280px;
-  margin: auto;
-  padding: 2rem 0;
+  margin: 2rem auto;
+  padding: 0;
 }
 
 .footer {
@@ -197,4 +197,18 @@ section[role='main'] {
 .article__company,
 .article__time {
   border-left: 2px solid var(--primary-color);
+}
+
+/* Info page */
+.info--main-section {
+  border: 2px dotted red;
+
+  text-align: center;
+}
+
+.info__contents {
+  width: 90%;
+  margin: auto;
+
+  border: 2px dotted red;
 }

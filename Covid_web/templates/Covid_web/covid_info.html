@@ -1,68 +1,16 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Information</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        .hyperlink{
-            font-size: 23px;
-            color: dimgrey;
-            text-align: right;
-            line-height:30px;
-        }
-        #container{ 
-            width: 1040px;
-            margin: 0 auto;
-            border: 3px dotted red; 
-        }
-        #title {
-            width: 740px;
-            margin: inherit;
-            border: 3px solid black;
-            background-color: white;
-        }
-        #content{
-            width: 680px;
-            margin: 0 auto;
-        }
-        
-        h1{ 
-            color: midnightblue;
-            text-align: center;
-            font-size: 50px;
-        }
-        h3{
-            color: black;
-            text-align: center;
-        }
-        
-        p {
-            font-size: 17px;
-            white-space: normal;
-            line-height:20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>COVID-19 basics</h1>
-
-    <div id="container">
+{% extends 'Covid_web/base.html' %} {% load static %} {% block content %}
+<section role="main" class="info--main-section">
+  <h1 class="info__title">COVID-19 basic information</h1>
+  <div class="info__contents">
     {% for c in cont %}
-    {% if '?' in c %}
-    <div id="title">
-        <h3>{{c}}</h3>
+    <div class="content--container">
+      {% if '?' in c %}
+      <h3 class="content__title">{{c}}</h3>
+      {% else %}
+      <p class="content__body">{{c}}</p>
+      {% endif %}
     </div>
-    {% else %}
-    <div id="content">
-        <p>{{c}}</p>
-    </div>
-    {% endif %}
     {% endfor %}
-    </div>
-    <h3 class="hyperlink"><a href="">See QnA</a><br><a href="{% url 'covid:home' %}">Go Home</a></h3>
-</body>
-</html>
+  </div>
+</section>
+{% endblock %}
