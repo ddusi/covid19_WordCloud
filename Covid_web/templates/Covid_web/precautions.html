@@ -1,87 +1,42 @@
-{% load index %}
-{% load slice %}
-{% load compare %}
-{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Precautions</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        .hyperlink{
-            font-size: 23px;
-            color: dimgrey;
-            text-align: right;
-            line-height:30px;
-        }
-    </style>    
+    <title>QnA</title>
 </head>
+
 <body>
-    <h1>Precautions</h1>
-    {% for p in pre %}
-        <p>{{p}}</p>
-    {% endfor %}
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>Covid confirmed</h1>
-    <h2>Korea</h2>
-    <table border="3" width ="800" height="700">
-        <thead>
-            <tr>
-                <th>Area</th>
-                <th>Total</th>
-                <th>Cases per 1M people</th>
-                <th>Recovered</th>
-                <th>Deaths</th>
-            </tr>
-        </thead>    
-        {% for i in Korea.Area|index %}
-        <tr>
-            <td>{{Korea.Area|slice:i}}</td>
-            <td>{{Korea.Total|slice:i}}</td>
-            <td>{{Korea.Recovered|slice:i}}</td>
-            <td>{{Korea.Cases|slice:i}}</td>
-            <td>{{Korea.Deaths|slice:i}}</td>
-        </tr>
+
+    <h2>Question</h2>
+    {% if questions %}
+        {% for question in questions.all %}
+            <div>
+                <h3>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <ul>{{ question.question_text }}</ul>
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" value="{{ question.pk }}" name="pk">
+                        <input name="password" id="password" required>
+                        <button type=submit >삭제하기</button>
+                    </form>
+                </h3>
+            </div>
         {% endfor %}
-    </table>
+    {% else %}
+        <h3>No question</h3>
+    {% endif %}
     <br>
     <br>
-    <br>
-    <br>
-    <h2>Top 15 in the world</h2>
-    <table border="3" width ="800" height="700">
-        <thead>
-            <tr>
-                <th>Area</th>
-                <th>Total</th>
-                <th>Cases per 1M people</th>
-                <th>Recovered</th>
-                <th>Deaths</th>
-            </tr>
-        </thead>    
-        {% for i in World.Area|index %}
-        <tr>
-            {% if World.Area|slice:i == "Worldwide" %}
-                <td><strong>{{World.Area|slice:i}}</strong></td>
-                <td><strong>{{World.Total|slice:i}}</strong></td>
-                <td><strong>{{World.Recovered|slice:i}}</strong></td>
-                <td><strong>{{World.Cases|slice:i}}</strong></td>
-                <td><strong>{{World.Deaths|slice:i}}</strong></td>
-            {% else %}
-                <td>{{World.Area|slice:i}}</td>
-                <td>{{World.Total|slice:i}}</td>
-                <td>{{World.Recovered|slice:i}}</td>
-                <td>{{World.Cases|slice:i}}</td>
-                <td>{{World.Deaths|slice:i}}</td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </table>
-    <h3 class="hyperlink"><a href="{% url 'covid:home' %}">Go Home</a></h3>
+
+    <h1>QnA</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <textarea name="question_text" cols="40" rows="10" required id="id_question_text"></textarea><br>
+        <label>PassWord</label>
+        <input name="password" id="password" required>
+        <button type=submit >질문하기</button>
+    </form>
+    <h3><a href="{% url 'covid:home' %}">Go Home</a></h3>
 </body>
-</html>
