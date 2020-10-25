@@ -93,17 +93,6 @@ def test(request):
 	return render(request, 'covid_web/test.html')
 
 
-def create_question(request):
-	questions = Question.objects
-	if request.method == 'POST':
-		form = QuestionForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('/covid-web/test', {'questions': questions})
-	else:
-		form = QuestionForm()
-	return render(request, 'covid_web/test.html', {'form': form,'questions': questions})
-
 # def create_question(request):
 # 	if request.method == 'POST':
 # 		form = QuestionForm(request.POST)
