@@ -55,42 +55,42 @@ def covid_info(request):
 	return render(request, 'covid_web/covid_info.html', context)
 
 
-def qna(request):
-	questions = Question.objects
-	return render(request, 'covid_web/qna.html', {'object': Question, 'questions': questions})
+# def qna(request):
+# 	questions = Question.objects
+# 	return render(request, 'covid_web/qna.html', {'object': Question, 'questions': questions})
+#
+#
+# def question_read(request, question_id):
+# 	question = get_object_or_404(Question, pk=question_id)
+# 	answers = question.answers.all()
+# 	return render(request, 'covid_web/question.html', {'object': Question, 'question': question, 'answers': answers})
 
 
-def question_read(request, question_id):
-	question = get_object_or_404(Question, pk=question_id)
-	answers = question.answers.all()
-	return render(request, 'covid_web/question.html', {'object': Question, 'question': question, 'answers': answers})
+# def answer(request, question_id):
+# 	if (request.method == "POST"):
+# 		answer_form = AnswerForm(request.POST)
+# 		answer_form.instance.question_id = question_id
+# 		if answer_form.is_valid():
+# 			answer = answer_form.save()
+# 	return HttpResponseRedirect(reverse_lazy('covid:question', args=[question_id]))
 
 
-def answer(request, question_id):
-	if (request.method == "POST"):
-		answer_form = AnswerForm(request.POST)
-		answer_form.instance.question_id = question_id
-		if answer_form.is_valid():
-			answer = answer_form.save()
-	return HttpResponseRedirect(reverse_lazy('covid:question', args=[question_id]))
+# def new_question(request):
+# 	return render(request, 'covid_web/new_question.html')
 
 
-def new_question(request):
-	return render(request, 'covid_web/new_question.html')
+# def precautions(request):
+# 	global pre, Korea, World
+# 	context = {
+# 		"pre": pre,
+# 		'Korea': Korea,
+# 		'World': World,
+# 	}
+# 	return render(request, 'covid_web/precautions.html', context)
 
 
-def precautions(request):
-	global pre, Korea, World
-	context = {
-		"pre": pre,
-		'Korea': Korea,
-		'World': World,
-	}
-	return render(request, 'covid_web/precautions.html', context)
-
-
-def test(request):
-	return render(request, 'covid_web/test.html')
+# def test(request):
+# 	return render(request, 'covid_web/test.html')
 
 
 # def create_question(request):

@@ -20,18 +20,18 @@ class QuestionCRUDView(View):
 		return super(QuestionCRUDView, self).dispatch(*args, **kwargs)
 
 	def get(self, *args, **kwargs):
-		return render(self.request, 'covid_web/test.html', {'form': self.form, 'questions': self.questions})
+		return render(self.request, 'covid_web/precautions.html', {'form': self.form, 'questions': self.questions})
 
 	def post(self, *args, **kwargs):
 		form = QuestionForm(self.request.POST)
 		if form.is_valid():
 			form.save()
-		return redirect('/covid-web/test', {'form': form, 'questions': self.questions})
+		return redirect('/covid-web/precautions', {'form': form, 'questions': self.questions})
 
 	def delete(self, *args, **kwargs):
 		data = Question.objects.get(pk=self.request.POST['pk'])
 		if data.password == self.request.POST['password']:
 			data.delete()
-			return render(self.request, 'covid_web/test.html', {'form': self.form, 'questions': self.questions})
+			return render(self.request, 'covid_web/precautions.html', {'form': self.form, 'questions': self.questions})
 		else:
-			return redirect('/covid-web/test', {'form': self.form, 'questions': self.questions, 'error':'password not match'})
+			return redirect('/covid-web/precautions', {'form': self.form, 'questions': self.questions, 'error':'password not match'})
