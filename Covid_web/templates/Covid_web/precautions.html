@@ -1,3 +1,7 @@
+{% extends 'Covid_web/base.html' %}
+{% load static %}
+{% block content %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,3 +44,4 @@
     </form>
     <h3><a href="{% url 'covid:home' %}">Go Home</a></h3>
 </body>
+{% endblock %}

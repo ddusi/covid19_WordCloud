@@ -63,3 +63,7 @@ def precautions(request):
 		'World': World,
 	}
 	return render(request, 'covid_web/precautions__.html', context)
+
+
+def status(request):
+	return render(request, 'covid_web/status.html')
