@@ -112,10 +112,10 @@ section[role='main'] {
 .home__data-visualization--container {
   display: grid;
   grid-template:
-    'a b' 2fr
-    'c c' 1fr /
+    'a b'
+    'c c' /
     1fr 1fr;
-  gap: 0.5rem;
+  gap: 0.5rem 2rem;
 
   margin-top: 2rem;
   padding: 1rem 2rem;
@@ -124,24 +124,18 @@ section[role='main'] {
   text-align: center;
 }
 
-.data-visualization__box1--container {
+.data-visusalization--container:first-of-type {
   grid-area: a;
-
-  height: 4rem;
-
-  background: var(--primary-color);
-  line-height: 4rem;
-  color: var(--secondary-color);
+}
+.data-visusalization--container:nth-of-type(2) {
+  grid-area: b;
 }
 
-.data-visualization__box2--container {
-  grid-area: b;
+.data-visualization__preview {
+  width: 100%;
+  height: 100%;
 
-  height: 4rem;
-
-  background: var(--primary-color);
-  line-height: 4rem;
-  color: var(--secondary-color);
+  object-fit: contain;
 }
 
 .data-visualization__link-status--container {
