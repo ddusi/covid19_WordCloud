@@ -176,6 +176,7 @@ section.home--main-section {
   justify-content: center;
   align-items: center;
 
+  background: rgba(15, 54, 82, 0.6);
   text-align: center;
 }
 
@@ -188,18 +189,24 @@ section.home--main-section {
   left: 0;
   width: 100%;
   height: 100%;
+
+  background: center / cover no-repeat
+    url('/static/bg-images/confirmed-cases.jpg');
+  filter: grayscale(60%);
 }
 
 .welcome-message__title {
   margin: 0.5rem;
 
   font-size: 2.5rem;
+  color: var(--color-1);
 }
 
 .welcome-message__body {
   margin: 0;
 
   font-size: 1.5rem;
+  color: var(--color-2);
 }
 
 .welcome-message__link-news {
