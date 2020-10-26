@@ -1,8 +1,0 @@
-<form action="{% url 'covid:create' %}" method="post">
-    {% csrf_token %}
-    <div>
-        <label for="content">question</label><br>
-      <textarea name="question_text" id="question_text" cols="30" rows="10"></textarea>
-    </div>
-    <input type="submit" value="add question">
-  </form>

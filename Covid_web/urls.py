@@ -1,17 +1,17 @@
 from django.urls import path
 
-from . import views
-
+from .views import *
 
 app_name = 'covid'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('News', views.News, name='News'),
-    path('basic_information', views.basic_information, name='basic_information'),
-    path('QnA', views.QnA, name='QnA'),
-    path('new',views.new, name='new'),
-    path('create',views.create, name='create'),
-    path('Precautions', views.Precautions, name='Precautions'),
-    path('<int:question_id>/', views.ques, name='ques'),
-    path('<int:question_id>', views.answer, name='answer'),
+    path('', views.home, name='home'),
+    path('news/', views.news, name='news'),
+    path('covid-info/', views.covid_info, name='covid-info'),
+    # path('qna/', views.qna, name='qna'),
+    # path('new-question/',views.new_question, name='new_question'),
+    # path('<int:question_id>/', views.question_read, name='question'),
+    # path('<int:question_id>/', views.answer, name='answer'),
+    path('precautions/', QuestionCRUDView.as_view(), name='precautions'),
+    path('test/', views.precautions, name='test'),
+    path('status/', views.status, name='status'),
 ]

@@ -5,6 +5,7 @@ from django.utils import timezone
 
 class Question(models.Model):
     question_text = models.TextField()
+    password = models.TextField(default='0000')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

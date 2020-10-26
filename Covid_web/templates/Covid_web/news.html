@@ -1,0 +1,37 @@
+{% extends 'Covid_web/base.html' %} {% load index %} {% load slice %} {% load
+static %} {% block content %}
+<section role="main" class="news--main-section">
+  <section class="news__wordcloud-image--container">
+    <img
+      src="/static/covid_person_new.jpg"
+      class="wordcloud-image"
+      alt="WordCloud graphics based on news articles related to COVID-19"
+    />
+  </section>
+  <section class="news__article-list--container">
+    <h1 class="article-list__title">News</h1>
+    <table class="article-list__article-table">
+      <thead>
+        <tr>
+          <th>headline</th>
+          <th>company</th>
+          <th>time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in headline|index %}
+        <tr class="article-table__article">
+          <td class="article__headline-link">
+            <a href="{{url|slice:i}}" target="_blank" rel="noopener noreferrer">
+              {{headline|slice:i}}
+            </a>
+          </td>
+          <td class="article__company">{{company|slice:i}}</td>
+          <td class="article__time">{{time|slice:i}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</section>
+{% endblock %}

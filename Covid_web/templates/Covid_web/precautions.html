@@ -1,0 +1,47 @@
+{% extends 'Covid_web/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QnA</title>
+</head>
+
+<body>
+
+    <h2>Question</h2>
+    {% if questions %}
+        {% for question in questions.all %}
+            <div>
+                <h3>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <ul>{{ question.question_text }}</ul>
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" value="{{ question.pk }}" name="pk">
+                        <input name="password" id="password" required>
+                        <button type=submit >삭제하기</button>
+                    </form>
+                </h3>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>No question</h3>
+    {% endif %}
+    <br>
+    <br>
+
+    <h1>QnA</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <textarea name="question_text" cols="40" rows="10" required id="id_question_text"></textarea><br>
+        <label>PassWord</label>
+        <input name="password" id="password" required>
+        <button type=submit >질문하기</button>
+    </form>
+    <h3><a href="{% url 'covid:home' %}">Go Home</a></h3>
+</body>
+{% endblock %}

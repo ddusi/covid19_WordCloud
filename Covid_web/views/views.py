@@ -2,63 +2,68 @@ from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRe
 from django.urls import reverse_lazy
 from Covid_web.models import Question, Answer
 from Covid_web.forms import AnswerForm
+from ..helper.get_info import basic, precaution, Covid_confirmed, Make_Cloud
+from ..helper.make_cloud_helper import make_cloud_helper
+import threading
+import pandas as pd
+from ..forms import QuestionForm
+
+flag = True
+article = {}
+cont = []
+pre = []
+Korea = {}
+World = {}
 
 
-def index(request):
-	return render(request, 'Covid_web/index.html')
+def make():
+	global flag, cont, article, pre, Korea, World
+	timer = threading.Timer(600, make)
+
+	if flag:
+		make_cloud_helper('covid_WordCloud.png')
+		flag = False
+	else:
+		make_cloud_helper('covid_WordCloud1.png')
+		flag = True
+	article_pd = pd.read_csv('article.csv')
+	article = article_pd.to_dict()
+	cont = basic()
+	pre = precaution()
+	Korea, World = Covid_confirmed()
+	timer.start()
 
 
-def QnA(request):
-	questions = Question.objects
-	return render(request, 'Covid_web/QnA.html', {'object': Question, 'questions': questions})
+make()
 
 
-def ques(request, question_id):
-	question = get_object_or_404(Question, pk=question_id)
-	answers = question.answers.all()
-	return render(request, 'Covid_web/Question.html', {'object': Question, 'question': question, 'answers': answers})
+def home(request):
+	return render(request, 'covid_web/home.html')
 
 
-def new(request):
-	return render(request, 'Covid_web/new.html')
-
-
-def create(request):
-	if (request.method == 'POST'):
-		post = Question()
-		post.question_text = request.POST['question_text']
-		post.save()
-	return redirect('covid:QnA')
-
-
-def answer(request, question_id):
-	if (request.method == "POST"):
-		answer_form = AnswerForm(request.POST)
-		answer_form.instance.question_id = question_id
-		if answer_form.is_valid():
-			answer = answer_form.save()
-	return HttpResponseRedirect(reverse_lazy('covid:ques', args=[question_id]))
-
-
-def News(request):
+def news(request):
 	global article
 	context = article
-	return render(request, 'Covid_web/News.html', context)
+	return render(request, 'covid_web/news.html', context)
 
 
-def Precautions(request):
+def covid_info(request):
+	global cont
+	context = {
+		'cont': cont[1:-21]
+	}
+	return render(request, 'covid_web/covid_info.html', context)
+
+
+def precautions(request):
 	global pre, Korea, World
 	context = {
 		"pre": pre,
 		'Korea': Korea,
 		'World': World,
 	}
-	return render(request, 'Covid_web/Precautions.html', context)
+	return render(request, 'covid_web/precautions__.html', context)
 
 
-def basic_information(request):
-	global cont
-	context = {
-		'cont': cont[1:-21]
-	}
-	return render(request, 'Covid_web/basic_information.html', context)
+def status(request):
+	return render(request, 'covid_web/status.html')

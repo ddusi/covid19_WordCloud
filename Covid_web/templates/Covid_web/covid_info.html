@@ -1,0 +1,16 @@
+{% extends 'Covid_web/base.html' %} {% load static %} {% block content %}
+<section role="main" class="info--main-section">
+  <h1 class="info__title">COVID-19 basic information</h1>
+  <div class="info__contents">
+    {% for c in cont %}
+    <div class="content--container">
+      {% if '?' in c %}
+      <h3 class="content__title">{{c}}</h3>
+      {% else %}
+      <p class="content__body">{{c}}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
