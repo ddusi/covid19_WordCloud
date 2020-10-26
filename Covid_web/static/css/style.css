@@ -80,7 +80,7 @@ button:hover {
 
 .navigation__link > a {
   position: relative;
-  padding: 0.3rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   transition: 0.2s all linear;
 
   text-decoration: none;
@@ -146,15 +146,23 @@ section[role='main'] {
 
 .footer__contacts--container {
   display: flex;
-
-  color: var(--color-2);
 }
 
 .footer__contacts--container > ion-icon {
   width: 1.5rem;
   height: 1.5rem;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: 0.3s all linear;
+  cursor: pointer;
 
-  margin-left: 1rem;
+  color: var(--color-2);
+}
+
+.footer__contacts--container > ion-icon:hover {
+  background: var(--color-2);
+  color: var(--color-5);
 }
 
 /* Home page */
