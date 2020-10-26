@@ -212,3 +212,39 @@ section[role='main'] {
 
   border: 2px dotted red;
 }
+
+/* Precautions page */
+.precautions--main-section {
+  display: grid;
+  grid-template:
+    'a b' 1fr /
+    1fr 2fr;
+  gap: 2rem;
+}
+
+.precautions__precautions-list {
+  grid-area: a;
+
+  padding: 1rem;
+
+  text-align: center;
+}
+
+.precautions__questions-list {
+  grid-area: b;
+
+  text-align: center;
+}
+
+.questions-list__ask {
+  margin-top: 2rem;
+}
+
+.ask__body {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ask__password--container {
+  text-align: right;
+}
