@@ -3,6 +3,13 @@
   --primary-color: #111111;
   --secondary-color: #eeeeee;
   --tertiary-color: #aaaaaa;
+
+  --color-1: #ffffff;
+  --color-2: #d0ebff;
+  --color-3: #6ec0ff;
+  --color-4: #003a66;
+  --color-5: #0b283d;
+  --color-special: #f9a056;
 }
 
 body {
