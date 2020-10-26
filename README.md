@@ -56,6 +56,7 @@ python -m nltk.downloader all
 
 4. django 실행
 ```
+python manage.py migrate
 python manage.py runserver
 ```
 
