@@ -172,6 +172,7 @@ section.home--main-section {
   justify-content: center;
 
   width: 100%;
+  max-width: 100vw;
   margin: 0;
 }
 
@@ -183,6 +184,8 @@ section.home--main-section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  padding: 4rem 0;
 
   background: rgba(15, 54, 82, 0.6);
   text-align: center;
@@ -229,12 +232,17 @@ section.home--main-section {
     'c c' 1fr /
     1fr 1fr;
   gap: 0.5rem 2rem;
+  justify-items: center;
   align-items: center;
 
   padding: 1rem 2rem;
 
   background: var(--color-1);
   text-align: center;
+}
+
+.data-visualization--container {
+  max-width: 480px;
 }
 
 .data-visusalization--container:first-of-type {
