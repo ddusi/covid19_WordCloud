@@ -46,8 +46,5 @@ def make_cloud_helper(path):
 	# wc.generate(text)
 	image_colors = ImageColorGenerator(covid_color)
 	wc.recolor(color_func=image_colors)
-	# plt.figure(figsize=(30, 15))
-	plt.imshow(wc, interpolation="bilinear")
-	plt.axis('off')
 	wc.to_file("Covid_web/static/" + path)
 

@@ -6,7 +6,6 @@ from ..helper.get_info import basic, precaution, Covid_confirmed, Make_Cloud
 from ..helper.make_cloud_helper import make_cloud_helper
 import threading
 import pandas as pd
-from ..forms import QuestionForm
 
 flag = True
 article = {}
