@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse_lazy
-from Covid_web.models import Question, Answer
-from Covid_web.forms import AnswerForm
 from ..helper.get_info import Covid_confirmed
 # from ..helper.covid19_basic_and_precaution_info_crawl_helper import basic, precaution
 from ..helper.make_cloud_helper import make_cloud_helper
@@ -53,16 +51,6 @@ def covid_info(request):
 		'cont': cont[1:-21]
 	}
 	return render(request, 'covid_web/covid_info.html', context)
-
-
-def precautions(request):
-	global pre, Korea, World
-	context = {
-		"pre": pre,
-		'Korea': Korea,
-		'World': World,
-	}
-	return render(request, 'covid_web/precautions__.html', context)
 
 
 def status(request):
