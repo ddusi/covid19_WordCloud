@@ -47,7 +47,7 @@ cd covid_wordCloud
 
 3. 라이브러리들 설치
 ```
-pip install cloudworld
+pip install wordcloud
 pip install olefile
 pip install tornado
 pip install -r requirements.txt
