@@ -20,32 +20,37 @@
   </div>
 
   <div class="precautions__questions-list">
-    <h1>QnA</h1>
+    <h1 class="questions-list__title">QnA</h1>
     {% if questions %} {% for question in questions.all %}
     <form action="" method="post" class="question--container">
       {% csrf_token %}
       <p class="question__body">{{ question.question_text }}</p>
       <input type="hidden" name="_method" value="delete" />
       <input type="hidden" value="{{ question.pk }}" name="pk" />
-      <input name="password" id="password" required />
-      <button type="submit">삭제하기</button>
+      <input
+        class="question__password-input"
+        type="password"
+        name="password"
+        required
+      />
+      <button class="question__password-submit" type="submit">삭제</button>
     </form>
     {% endfor %} {% else %}
     <h3 class="precautions__message-no-question">There is no question</h3>
     {% endif %}
     <form action="" method="post" class="questions-list__ask">
-      <h1>Ask Questions</h1>
+      <h1 class="ask__title">Ask Questions</h1>
       {% csrf_token %}
-      <textarea
-        name="question_text"
-        id="id_question_text"
-        class="ask__body"
-        required
-      ></textarea>
+      <textarea class="ask__body" name="question_text" required></textarea>
       <div class="ask__password--container">
-        <label for="password">Password</label>
-        <input name="password" id="password" required />
-        <input type="submit" value="질문 등록" />
+        <label class="ask__password--label" for="password">Password</label>
+        <input
+          class="ask__password--input"
+          type="password"
+          name="password"
+          required
+        />
+        <button class="ask__password--submit" type="submit">등록</button>
       </div>
     </form>
   </div>
