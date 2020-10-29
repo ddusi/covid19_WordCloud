@@ -568,3 +568,70 @@ section.precautions--main-section {
 
   font-size: 0.8rem;
 }
+
+/* Status page */
+section.status--main-section {
+  padding-top: 2rem;
+}
+
+.status__dashboard {
+  display: grid;
+  grid-template:
+    'title title' auto
+    'chart-a chart-b' 1fr
+    'chart-c chart-d' 1fr /
+    1fr 1fr;
+  gap: 0.5rem 2rem;
+  align-items: center;
+
+  padding: 1rem 2rem;
+  border-radius: 8px;
+
+  background: var(--color-1);
+  color: var(--color-5);
+}
+
+.dashboard__title {
+  grid-area: title;
+
+  margin: 0 0 1rem;
+}
+
+.dashboard__chart--container {
+  box-sizing: border-box;
+  justify-items: center;
+
+  max-width: 640px;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+
+  background: var(--color-5);
+  color: var(--color-1);
+}
+
+.dashboard__chart--container:first-of-type {
+  grid-area: chart-a;
+}
+
+.dashboard__chart--container:nth-of-type(2) {
+  grid-area: chart-b;
+}
+
+.dashboard__chart--container:nth-of-type(3) {
+  grid-area: chart-c;
+}
+
+.dashboard__chart--container:nth-of-type(4) {
+  grid-area: chart-d;
+}
+
+.chart__name {
+  margin: 0 0 1rem;
+}
+
+.chart__graphic {
+  width: 100%;
+
+  object-fit: contain;
+}
