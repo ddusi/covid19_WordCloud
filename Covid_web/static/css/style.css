@@ -7,6 +7,7 @@
   --color-5: #0b283d;
   --color-6: #041c2d;
   --color-special: #f9a056;
+  --color-warning: #ff4040;
 }
 
 body {
@@ -434,12 +435,15 @@ section.info--main-section {
 }
 
 /* Precautions page */
-.precautions--main-section {
+section.precautions--main-section {
   display: grid;
   grid-template:
     'a b' 1fr /
-    1fr 2fr;
+    2fr 3fr;
   gap: 2rem;
+  align-items: start;
+
+  padding-top: 2rem;
 }
 
 .precautions__precautions-list {
@@ -448,23 +452,119 @@ section.info--main-section {
   padding: 1rem;
 
   text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--color-2);
+
+  background: var(--color-2);
+  color: var(--color-5);
 }
 
 .precautions__questions-list {
   grid-area: b;
 
+  padding: 1rem;
+
   text-align: center;
 }
 
+.precautions-list__title {
+  margin: 0 0 1rem;
+}
+
+.questions-list__title {
+  margin: 0 0 1rem;
+}
+
+.question--container {
+  position: relative;
+}
+
+.question__body {
+  width: 70%;
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+
+  font-style: italic;
+  text-align: left;
+}
+
+.question__body::before {
+  content: 'Q';
+  padding: 0.2rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+
+  background: var(--color-2);
+  color: var(--color-5);
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+.question__password-input {
+  position: absolute;
+  top: 50%;
+  right: 3rem;
+
+  width: 10%;
+  transform: translateY(-50%);
+}
+
+.question__password-submit {
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  padding: 0.2rem;
+  border-color: var(--color-warning);
+  transform: translateY(-50%);
+
+  font-size: 0.8rem;
+  background: var(--color-warning);
+}
+
 .questions-list__ask {
-  margin-top: 2rem;
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.ask__title {
+  margin: 4rem 0 1rem;
 }
 
 .ask__body {
   box-sizing: border-box;
+  resize: none;
   width: 100%;
+  height: 8rem;
 }
 
 .ask__password--container {
-  text-align: right;
+  display: grid;
+  grid-template:
+    'a b c d' auto /
+    1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ask__password--label {
+  grid-area: a;
+}
+
+.ask__password--input {
+  grid-area: b;
+  justify-self: start;
+
+  width: 80%;
+}
+
+.ask__password--submit {
+  grid-area: d;
+  justify-self: end;
+
+  width: 60%;
+  padding: 0.2rem;
+
+  font-size: 0.8rem;
 }
