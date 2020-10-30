@@ -1,16 +1,705 @@
 {% extends 'Covid_web/base.html' %} {% load static %} {% block content %}
 <section role="main" class="info--main-section">
   <h1 class="info__title">COVID-19 basic information</h1>
+  <h3 class="info__subtitle">
+    Symptoms, spread and other essential information about the new coronavirus
+    and COVID-19
+  </h3>
+
+  <p class="info__description">
+    As we continually learn more about coronavirus and COVID-19, it can help to
+    reacquaint yourself with some basic information. For example, understanding
+    how the virus spreads reinforces the importance of social distancing and
+    other health-promoting behaviors. Knowing how long the virus survives on
+    surfaces can guide how you clean your home and handle deliveries. And
+    reviewing the common symptoms of COVID-19 can help you know if it's time to
+    self-isolate.
+  </p>
+
   <div class="info__contents">
-    {% for c in cont %}
-    <div class="content--container">
-      {% if '?' in c %}
-      <h3 class="content__title">{{c}}</h3>
-      {% else %}
-      <p class="content__body">{{c}}</p>
-      {% endif %}
-    </div>
-    {% endfor %}
+    <details class="content--container">
+      <summary class="content__title">What is coronavirus?</summary>
+      <p class="content__body">
+        Coronaviruses are an extremely common cause of colds and other upper
+        respiratory infections.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">What is COVID-19?</summary>
+      <p class="content__body">
+        COVID-19, short for "coronavirus disease 2019," is the official name
+        given by the World Health Organization to the disease caused by this
+        newly identified coronavirus.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">How many people have COVID-19?</summary>
+      <p class="content__body">The numbers are changing rapidly.</p>
+      <p class="content__body">
+        The most up-to-date information is available from the World Health
+        Organization, the US Centers for Disease Control and Prevention, and
+        Johns Hopkins University.
+      </p>
+      <p class="content__body">
+        It has spread so rapidly and to so many countries that the World Health
+        Organization has declared it a pandemic (a term indicating that it has
+        affected a large population, region, country, or continent).
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Do adults younger than 65 who are otherwise healthy need to worry about
+        COVID-19?
+      </summary>
+      <p class="content__body">
+        Yes, they do. Although the risk of serious illness or death from
+        COVID-19 increases steadily with age, younger people can get sick enough
+        from the disease to require hospitalization. And certain underlying
+        medical conditions may increase the risk of serious COVID-19 for
+        individuals of any age.
+      </p>
+      <p class="content__body">
+        People of any age should take preventive health measures like frequent
+        hand washing, physical distancing, and wearing a mask when going out in
+        public, to help protect themselves and to reduce the chances of
+        spreading the infection to others.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        What are the symptoms of COVID-19?
+      </summary>
+      <p class="content__body">
+        Some people infected with the virus have no symptoms. When the virus
+        does cause symptoms, common ones include fever, body ache, dry cough,
+        fatigue, chills, headache, sore throat, loss of appetite, and loss of
+        smell. In some people, COVID-19 causes more severe symptoms like high
+        fever, severe cough, and shortness of breath, which often indicates
+        pneumonia.
+      </p>
+      <p class="content__body">
+        People with COVID-19 are also experiencing neurological symptoms,
+        gastrointestinal (GI) symptoms, or both. These may occur with or without
+        respiratory symptoms.
+      </p>
+      <p class="content__body">
+        For example, COVID-19 affects brain function in some people. Specific
+        neurological symptoms seen in people with COVID-19 include loss of
+        smell, inability to taste, muscle weakness, tingling or numbness in the
+        hands and feet, dizziness, confusion, delirium, seizures, and stroke.
+      </p>
+      <p class="content__body">
+        In addition, some people have gastrointestinal (GI) symptoms, such as
+        loss of appetite, nausea, vomiting, diarrhea, and abdominal pain or
+        discomfort associated with COVID-19. These symptoms might start before
+        other symptoms such as fever, body ache, and cough. The virus that
+        causes COVID-19 has also been detected in stool, which reinforces the
+        importance of hand washing after every visit to the bathroom and
+        regularly disinfecting bathroom fixtures.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Why do some people get very sick from COVID-19 while others do not?
+      </summary>
+      <p class="content__body">
+        One of the most perplexing aspects of coronavirus is why it strikes
+        people so differently. Why do some people sail through without a
+        symptom, while others — even some who are otherwise healthy and
+        relatively young — get extremely sick or even die? It may have to do
+        with interferons.
+      </p>
+      <p class="content__body">
+        New research suggests that up to 14% of people who develop severe
+        COVID-19 have an inadequate interferon response. In some people, this
+        happens because their own antibodies mistakenly attack and neutralize
+        their interferons. Others have a genetic mutation that prevents their
+        body from producing enough of a certain type of interferon.
+      </p>
+      <p class="content__body">
+        Interferons are an important component of innate immunity, the quick,
+        nonspecific immune defense the body mounts within minutes of infection
+        to rid the body of invaders. Interferons help protect the body in a
+        number of ways: they signal nearby cells to guard themselves against
+        invasion; they signal infected cells to die; and they activate the
+        adaptive immune system to mount a specific, long-term antibody response.
+        An inadequate interferon response could help explain why some people —
+        especially some young people without underlying conditions — get so much
+        sicker than others their age.
+      </p>
+      <p class="content__body">
+        Interferon treatments do exist to treat other illnesses. And interferon
+        inhalers were given to healthcare workers in China to help prevent
+        infection. But treatments come with their own risks, and questions about
+        dose, timing, and type of interferon would need to be resolved before
+        interferon therapy could be safely used for COVID-19.
+      </p>
+      <p class="content__body">
+        Another important reason for differences in severity of COVID-19 illness
+        is also related to the immune system. If the immune system doesn't turn
+        off once the virus is controlled, it can go into overdrive. The result:
+        an intense and widespread inflammatory response damaging tissues
+        throughout the body. This is often referred to as cytokine storm.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Can COVID-19 symptoms worsen rapidly after several days of illness?
+      </summary>
+      <p class="content__body">
+        Common symptoms of COVID-19 include fever, dry cough, fatigue, loss of
+        appetite, loss of smell, and body ache. In some people, COVID-19 causes
+        more severe symptoms like high fever, severe cough, and shortness of
+        breath, which often indicates pneumonia.
+      </p>
+      <p class="content__body">
+        A person may have mild symptoms for about one week, then worsen rapidly.
+        Let your doctor know if your symptoms quickly worsen over a short period
+        of time. Also call the doctor right away if you or a loved one with
+        COVID-19 experience any of the following emergency symptoms: trouble
+        breathing, persistent pain or pressure in the chest, confusion or
+        inability to arouse the person, or bluish lips or face.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        What are cytokine storms and what do they have to do with COVID-19?
+      </summary>
+      <p class="content__body">
+        A cytokine storm is an overreaction of the body's immune system. In some
+        people with COVID-19, the immune system releases immune messengers,
+        called cytokines, into the bloodstream out of proportion to the threat
+        or long after the virus is no longer a threat.
+      </p>
+      <p class="content__body">
+        When this happens, the immune system attacks the body's own tissues,
+        potentially causing significant harm. A cytokine storm triggers an
+        exaggerated inflammatory response that may damage the liver, blood
+        vessels, kidneys, and lungs, and increase formation of blood clots
+        throughout the body. Ultimately, the cytokine storm may cause more harm
+        than the coronavirus itself.
+      </p>
+      <p class="content__body">
+        A simple blood test can help determine whether someone with COVID-19 may
+        be experiencing a cytokine storm. Trials in countries around the world
+        are investigating whether drugs that have been used to treat cytokine
+        storms in people with other, non-COVID conditions could be effective in
+        people with COVID-19.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        One of the symptoms of COVID-19 is shortness of breath. What does that
+        mean?
+      </summary>
+      <p class="content__body">
+        Shortness of breath refers to unexpectedly feeling out of breath, or
+        winded. But when should you worry about shortness of breath? There are
+        many examples of temporary shortness of breath that are not worrisome.
+        For example, if you feel very anxious, it's common to get short of
+        breath and then it goes away when you calm down.
+      </p>
+      <p class="content__body">
+        However, if you find that you are ever breathing harder or having
+        trouble getting air each time you exert yourself, you always need to
+        call your doctor. That was true before we had the recent outbreak of
+        COVID-19, and it will still be true after it is over.
+      </p>
+      <p class="content__body">
+        Meanwhile, it's important to remember that if shortness of breath is
+        your only symptom, without a cough or fever, something other than
+        COVID-19 is the likely problem.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Does COVID-19 cause strokes? What about blood clots in other parts of
+        the body?
+      </summary>
+      <p class="content__body">
+        Strokes occur when the brain's blood supply is interrupted, usually by a
+        blood clot. Recently, there have been reports of a greater-than-expected
+        number of younger patients being hospitalized for, and sometimes dying
+        from, serious strokes. These strokes are happening in patients who test
+        positive for coronavirus but who do not have any traditional risk
+        factors for stroke. They tend to have no COVID-19 symptoms, or only mild
+        symptoms. The type of stroke occurring in these patients typically
+        occurs in much older patients.
+      </p>
+      <p class="content__body">
+        COVID-related strokes occur because of a bodywide increase in blood clot
+        formation, which can damage any organ, not just the brain. A blood clot
+        in the lungs is called pulmonary embolism and can cause shortness of
+        breath, chest pain, or death; a blood clot in or near the heart can
+        cause a heart attack; and blood clots in the kidneys can cause kidney
+        damage requiring dialysis.
+      </p>
+      <p class="content__body">
+        We don't yet know if the coronavirus itself stimulates blood clots to
+        form, or if they are a result of an overactive immune response to the
+        virus.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Can COVID-19 affect brain function?
+      </summary>
+      <p class="content__body">
+        COVID-19 does appear to affect brain function in some people. Specific
+        neurological symptoms seen in people with COVID-19 include loss of
+        smell, inability to taste, muscle weakness, tingling or numbness in the
+        hands and feet, dizziness, confusion, delirium, seizures, and stroke.
+      </p>
+      <p class="content__body">
+        One study that looked at 214 people with moderate to severe COVID-19 in
+        Wuhan, China found that about one-third of those patients had one or
+        more neurological symptoms. Neurological symptoms were more common in
+        people with more severe disease.
+      </p>
+      <p class="content__body">
+        Neurological symptoms have also been seen in COVID-19 patients in the US
+        and around the world. Some people with neurological symptoms tested
+        positive for COVID-19 but did not have any respiratory symptoms like
+        coughing or difficulty breathing; others experienced both neurological
+        and respiratory symptoms.
+      </p>
+      <p class="content__body">
+        Experts do not know how the coronavirus causes neurological symptoms.
+        They may be a direct result of infection or an indirect consequence of
+        inflammation or altered oxygen and carbon dioxide levels caused by the
+        virus.
+      </p>
+      <p class="content__body">
+        The CDC has added "new confusion or inability to rouse" to its list of
+        emergency warning signs that should prompt you to get immediate medical
+        attention.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Is a lost sense of smell a symptom of COVID-19? What should I do if I
+        lose my sense of smell?
+      </summary>
+      <p class="content__body">
+        Increasing evidence suggests that a lost sense of smell, known medically
+        as anosmia, may be a symptom of COVID-19. This is not surprising,
+        because viral infections are a leading cause of loss of sense of smell,
+        and COVID-19 is a caused by a virus. Still, loss of smell might help
+        doctors identify people who do not have other symptoms, but who might be
+        infected with the COVID-19 virus — and who might be unwittingly
+        infecting others.
+      </p>
+      <p class="content__body">
+        A statement written by a group of ear, nose and throat specialists
+        (otolaryngologists) in the United Kingdom reported that in Germany, two
+        out of three confirmed COVID-19 cases had a loss of sense of smell; in
+        South Korea, 30% of people with mild symptoms who tested positive for
+        COVID-19 reported anosmia as their main symptom.
+      </p>
+      <p class="content__body">
+        On March 22nd, the American Academy of Otolaryngology–Head and Neck
+        Surgery recommended that anosmia be added to the list of COVID-19
+        symptoms used to screen people for possible testing or self-isolation.
+      </p>
+      <p class="content__body">
+        In addition to COVID-19, loss of smell can also result from allergies as
+        well as other viruses, including rhinoviruses that cause the common
+        cold. So anosmia alone does not mean you have COVID-19. Studies are
+        being done to get more definitive answers about how common anosmia is in
+        people with COVID-19, at what point after infection loss of smell
+        occurs, and how to distinguish loss of smell caused by COVID-19 from
+        loss of smell caused by allergies, other viruses, or other causes
+        altogether.
+      </p>
+      <p class="content__body">
+        Until we know more, tell your doctor right away if you find yourself
+        newly unable to smell. He or she may prompt you to get tested and to
+        self-isolate.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        How long is it between when a person is exposed to the virus and when
+        they start showing symptoms?
+      </summary>
+      <p class="content__body">
+        Recently published research found that on average, the time from
+        exposure to symptom onset (known as the incubation period) is about five
+        to six days. However, studies have shown that symptoms could appear as
+        soon as three days after exposure to as long as 13 days later. These
+        findings continue to support the CDC recommendation of self-quarantine
+        and monitoring of symptoms for 14 days post exposure.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">How does coronavirus spread?</summary>
+      <p class="content__body">
+        The coronavirus is thought to spread mainly from person to person. This
+        can happen between people who are in close contact with one another.
+        Droplets that are produced when an infected person coughs or sneezes may
+        land in the mouths or noses of people who are nearby, or possibly be
+        inhaled into their lungs.
+      </p>
+      <p class="content__body">
+        A person infected with coronavirus — even one with no symptoms — may
+        emit aerosols when they talk or breathe. Aerosols are infectious viral
+        particles that can float or drift around in the air for up to three
+        hours. Another person can breathe in these aerosols and become infected
+        with the coronavirus. This is why everyone should cover their nose and
+        mouth when they go out in public.
+      </p>
+      <p class="content__body">
+        Coronavirus can also spread from contact with infected surfaces or
+        objects. For example, a person can get COVID-19 by touching a surface or
+        object that has the virus on it and then touching their own mouth, nose,
+        or possibly their eyes.
+      </p>
+      <p class="content__body">
+        The virus may be shed in saliva, semen, and feces; whether it is shed in
+        vaginal fluids isn't known. Kissing can transmit the virus. Transmission
+        of the virus through feces, or during vaginal or anal intercourse or
+        oral sex, appears to be extremely unlikely at this time.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        What does the CDC's new definition of "close contacts" mean for me?
+      </summary>
+      <p class="content__body">
+        The CDC has expanded how it defines close contacts of someone with
+        COVID-19. Until this point, the CDC had defined a close contact as
+        someone who spent 15 or more consecutive minutes within six feet of
+        someone with COVID-19. According to the new definition, a close contact
+        is someone who spends 15 minutes or more within six feet of a person
+        with COVID-19 over a period of 24 hours.
+      </p>
+      <p class="content__body">
+        Close contacts are at increased risk of infection. When a person tests
+        positive for COVID-19, contact tracers may identify their close contacts
+        and urge them to quarantine to prevent further spread. Based on the new
+        definition, more people will now be considered close contacts.
+      </p>
+      <p class="content__body">
+        Many factors can affect the chances that infection will spread from one
+        person to another. These factors include whether or one or both people
+        are wearing masks, whether the infected person is coughing or showing
+        other symptoms, and whether the encounter occurred indoors or outdoors.
+        Though the "15 minutes within six feet rule" is a helpful guideline,
+        it's always best to minimize close interactions with people who are not
+        members of your household.
+      </p>
+      <p class="content__body">
+        The CDC's new definition was influenced by a case described in the CDC's
+        Morbidity and Mortality Weekly Report in which a correctional officer in
+        Vermont is believed to have been infected after being within six feet
+        for 17 non-consecutive minutes of six asymptomatic individuals, all of
+        whom later tested positive for COVID-19.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Has a mutation made it easier for the COVID-19 virus to spread?
+      </summary>
+      <p class="content__body">
+        Like other viruses, the coronavirus responsible for COVID-19 —
+        SARS-CoV-2 — cannot survive without a living cell in which to reproduce.
+        Once it enters human cells, SARS-CoV-2 churns out copies of itself,
+        which go on to infect other cells.
+      </p>
+      <p class="content__body">
+        Sometimes, a mistake is made when the virus is replicating. This is
+        called a mutation. A mutation of the original SARS-CoV-2 virus — the
+        D614G variant — has quickly become the most prevalent form of the virus
+        seen around the world.
+      </p>
+      <p class="content__body">
+        This mutation occurred on the coronavirus's spike proteins, protrusions
+        on the surface of the virus that open the host cell and allow the virus
+        to enter. About 1,300 amino acids serve as building blocks for a spike
+        protein. In the D614G variant, the genetic instructions for just one of
+        the spike protein's amino acids — number 614 — switched in the new
+        variant from a "D" (short for aspartic acid) to a "G" (short for
+        glycine).
+      </p>
+      <p class="content__body">
+        Evidence is building that the D614G strain may spread more easily than
+        the original strain. Infected individuals with this strain appear to
+        have more virus in their upper respiratory tracts, and therefore may be
+        more likely to spread infection to others. So far, the mutated strain
+        has NOT seemed to cause more severe disease.
+      </p>
+      <p class="content__body">
+        Mutations of coronaviruses, like all viruses, are to be expected.
+        Scientists working on vaccines take this into account.
+      </p>
+      <p class="content__body">
+        Whether people previously infected with the original strain can be
+        infected again with this new and now more dominant strain is not yet
+        known. But it's another reason why physical distancing, avoiding crowds
+        when possible, wearing masks, and hand washing remain our best defense.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Do people without symptoms have the same amount of coronavirus in their
+        bodies as people with symptoms? And can people without symptoms spread
+        the virus to others?
+      </summary>
+      <p class="content__body">
+        "Without symptoms" can refer to two groups of people: those who
+        eventually do have symptoms (pre-symptomatic) and those who never go on
+        to have symptoms (asymptomatic). During this pandemic, we have seen that
+        people without symptoms can spread the coronavirus infection to others.
+      </p>
+      <p class="content__body">
+        A person with COVID-19 may be contagious 48 to 72 hours before starting
+        to experience symptoms. In fact, people without symptoms may be more
+        likely to spread the illness, because they are unlikely to be isolating
+        and may not adopt behaviors designed to prevent spread.
+      </p>
+      <p class="content__body">
+        But what about people who never go on to develop symptoms? A recent
+        study compared the amount of coronavirus in the nose, throat, and lungs
+        of symptomatic and asymptomatic adults infected with SARS-CoV-2 (the
+        COVID-19 coronavirus). Both groups of patients had similar amounts of
+        virus in their bodies throughout the infection. This study did not look
+        at the degree to which people with asymptomatic infections may infect
+        others.
+      </p>
+      <p class="content__body">
+        This study provides yet another reason to wear face masks and observe
+        physical distancing. Both measures can help reduce the risk that someone
+        who does not have symptoms will infect others.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Are kids any more or less likely than adults to spread coronavirus?
+      </summary>
+      <p class="content__body">
+        Most children who become infected with the COVID-19 virus have no
+        symptoms, or they have milder symptoms such as low-grade fever, fatigue,
+        and cough. Early studies suggested that children do not contribute much
+        to the spread of coronavirus. But more recent studies raise concerns
+        that children could be capable of spreading the infection.
+      </p>
+      <p class="content__body">
+        Though the recent studies varied in their methods, their findings were
+        similar: infected children had as much, or more, coronavirus in their
+        upper respiratory tracts as infected adults.
+      </p>
+      <p class="content__body">
+        The amount of virus found in children — their viral load — was not
+        correlated with the severity of their symptoms. In other words, more
+        virus did not mean more severe symptoms.
+      </p>
+      <p class="content__body">
+        Finding high amounts of viral genetic material — these studies measured
+        viral RNA, not live virus — in kids does not prove that children are
+        infectious. However, the presence of high viral loads in infected
+        children does increase the concern that children, even those without
+        symptoms, could readily spread the infection to others.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        How could contact tracing help slow the spread of COVID-19?
+      </summary>
+      <p class="content__body">
+        Anyone who comes into close contact with someone who has COVID-19 is at
+        increased risk of becoming infected themselves, and of potentially
+        infecting others. Contact tracing can help prevent further transmission
+        of the virus by quickly identifying and informing people who may be
+        infected and contagious, so they can take steps to not infect others.
+      </p>
+      <p class="content__body">
+        Contact tracing begins with identifying everyone that a person recently
+        diagnosed with COVID-19 has been in contact with since they became
+        contagious. In the case of COVID-19, a person may be contagious 48 to 72
+        hours before they started to experience symptoms.
+      </p>
+      <p class="content__body">
+        The contacts are notified about their exposure. They may be told what
+        symptoms to look out for, advised to isolate themselves for a period of
+        time, and to seek medical attention as needed if they start to
+        experience symptoms.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">How deadly is COVID-19?</summary>
+      <p class="content__body">
+        The answer depends on whether you're looking at the fatality rate (the
+        risk of death among those who are infected) or the total number of
+        deaths.
+      </p>
+      <p class="content__body">
+        Regarding the fatality rate, it appears that the risk of death with the
+        pandemic coronavirus infection (commonly estimated at about 1%) is far
+        less than it was for SARS (approximately 11%) and MERS (about 35%), but
+        will likely be higher than the risk from seasonal flu (which averages
+        about 0.1%). We will have a more accurate estimate of fatality rate for
+        this coronavirus infection once testing becomes more routine.
+      </p>
+      <p class="content__body">
+        What we do know so far is the risk of death very much depends on your
+        age and your overall health. Children appear to be at very low risk of
+        severe disease and death. Older adults and those who smoke or have
+        chronic diseases such as diabetes or heart disease have a higher chance
+        of developing complications like pneumonia, which could be deadly.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Can the COVID-19 virus spread through air conditioning?
+      </summary>
+      <p class="content__body">
+        We don't know for certain if the COVID-19 virus spreads through air
+        conditioning. But we do know that when it's hot and humid, people are
+        more likely to stay indoors, with the windows closed — giving the virus
+        more opportunity to spread.
+      </p>
+      <p class="content__body">
+        Coronavirus spreads through droplets that an infected person emits
+        through coughs or sneezes and through smaller, infectious viral
+        particles that can drift around in the air for several hours. Outdoors,
+        air currents can scatter and dilute the virus, making transmission less
+        likely. You're more likely to inhale the virus indoors, with the windows
+        closed, whether or not you have the air conditioning on.
+      </p>
+      <p class="content__body">
+        If you must be indoors with anyone outside of your household, increase
+        air circulation by keeping the windows open as much as possible.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        How long can the coronavirus stay airborne? I have read different
+        estimates.
+      </summary>
+      <p class="content__body">
+        A study done by National Institute of Allergy and Infectious Diseases'
+        Laboratory of Virology in the Division of Intramural Research in
+        Hamilton, Montana helps to answer this question. The researchers used a
+        nebulizer to blow coronaviruses into the air. They found that infectious
+        viruses could remain in the air for up to three hours. The results of
+        the study were published in the New England Journal of Medicine on March
+        17, 2020.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        How long can the coronavirus that causes COVID-19 survive on surfaces?
+      </summary>
+      <p class="content__body">
+        A recent study found that the COVID-19 coronavirus can survive up to
+        four hours on copper, up to 24 hours on cardboard, and up to two to
+        three days on plastic and stainless steel. The researchers also found
+        that this virus can hang out as droplets in the air for up to three
+        hours before they fall. But most often they will fall more quickly.
+      </p>
+      <p class="content__body">
+        There's a lot we still don't know, such as how different conditions,
+        such as exposure to sunlight, heat, or cold, can affect these survival
+        times.
+      </p>
+      <p class="content__body">
+        As we learn more, continue to follow the CDC's recommendations for
+        cleaning frequently touched surfaces and objects every day. These
+        include counters, tabletops, doorknobs, bathroom fixtures, toilets,
+        phones, keyboards, tablets, and bedside tables.
+      </p>
+      <p class="content__body">
+        If surfaces are dirty, first clean them using a detergent and water,
+        then disinfect them. A list of products suitable for use against
+        COVID-19 is available here. This list has been pre-approved by the U.S.
+        Environmental Protection Agency (EPA) for use during the COVID-19
+        outbreak.
+      </p>
+      <p class="content__body">
+        In addition, wash your hands for 20 seconds with soap and water after
+        bringing in packages, or after trips to the grocery store or other
+        places where you may have come into contact with infected surfaces.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Can I catch the coronavirus by eating food handled or prepared by
+        others?
+      </summary>
+      <p class="content__body">
+        We are still learning about transmission of the new coronavirus. It's
+        not clear if it can be spread by an infected person through food they
+        have handled or prepared, but if so it would more likely be the
+        exception than the rule.
+      </p>
+      <p class="content__body">
+        That said, the new coronavirus is a respiratory virus known to spread by
+        upper respiratory secretions, including airborne droplets after coughing
+        or sneezing. The virus that causes COVID-19 has also been detected in
+        the stool of certain people. So we currently cannot rule out the
+        possibility of the infection being transmitted through food by an
+        infected person who has not thoroughly washed their hands. In the case
+        of hot food, the virus would likely be killed by cooking. This may not
+        be the case with uncooked foods like salads or sandwiches.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        The flu kills more people than COVID-19, at least so far. Why are we so
+        worried about COVID-19? Shouldn't we be more focused on preventing
+        deaths from the flu?
+      </summary>
+      <p class="content__body">
+        You're right to be concerned about the flu. Fortunately, the same
+        measures that help prevent the spread of the COVID-19 virus — frequent
+        and thorough handwashing, wearing a mask, not touching your face,
+        coughing and sneezing into a tissue or your elbow, avoiding people who
+        are sick, and staying away from people if you're sick — also help to
+        protect against spread of the flu.
+      </p>
+      <p class="content__body">
+        If you do get sick with the flu, your doctor can prescribe an antiviral
+        drug that can reduce the severity of your illness and shorten its
+        duration. There are currently no antiviral drugs available to treat
+        COVID-19.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">Should I get a flu shot?</summary>
+      <p class="content__body">
+        While the flu shot won't protect you from developing COVID-19, it's
+        still a good idea. Most people older than six months can and should get
+        the flu vaccine. Doing so reduces the chances of getting seasonal flu.
+        Even if the vaccine doesn't prevent you from getting the flu, it can
+        decrease the chance of severe symptoms. But again, the flu vaccine will
+        not protect you against this coronavirus.
+      </p>
+    </details>
+    <details class="content--container">
+      <summary class="content__title">
+        Is it safe to use steroids to control allergy and asthma symptoms during
+        the COVID-19 pandemic?
+      </summary>
+      <p class="content__body">
+        Yes, it is safe to use corticosteroid nasal sprays to control nasal
+        allergies or inhaled corticosteroids to control asthma symptoms during
+        the COVID-19 pandemic.
+      </p>
+      <p class="content__body">
+        The American College of Allergy, Asthma and Immunology (ACAAI) recently
+        issued a statement emphasizing the importance of controlling allergy and
+        asthma symptoms during the pandemic. They said there is no evidence that
+        intranasal or inhaled corticosteroids increase the risk of getting the
+        COVID-19 infection or lead to a worse outcome if you do get infected.
+      </p>
+      <p class="content__body">
+        The ACAAI statement was a response to concerns over reports warning
+        against the use of systemic steroids to treat hospitalized COVID-19
+        patients with specific respiratory complications. However, those reports
+        did not refer to healthy individuals using corticosteroid nasal sprays
+        or inhalers to manage allergies or asthma.
+      </p>
+    </details>
   </div>
 </section>
 {% endblock %}

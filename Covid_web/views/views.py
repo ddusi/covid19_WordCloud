@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse_lazy
-from Covid_web.models import Question, Answer
-from Covid_web.forms import AnswerForm
-from ..helper.get_info import basic, precaution, Covid_confirmed, Make_Cloud
+from ..helper.get_info import Covid_confirmed
+# from ..helper.covid19_basic_and_precaution_info_crawl_helper import basic, precaution
 from ..helper.make_cloud_helper import make_cloud_helper
 import threading
 import pandas as pd
-from ..forms import QuestionForm
 
 flag = True
 article = {}
@@ -28,8 +26,8 @@ def make():
 		flag = True
 	article_pd = pd.read_csv('article.csv')
 	article = article_pd.to_dict()
-	cont = basic()
-	pre = precaution()
+	# cont = basic()
+	# pre = precaution()
 	Korea, World = Covid_confirmed()
 	timer.start()
 
@@ -53,16 +51,6 @@ def covid_info(request):
 		'cont': cont[1:-21]
 	}
 	return render(request, 'covid_web/covid_info.html', context)
-
-
-def precautions(request):
-	global pre, Korea, World
-	context = {
-		"pre": pre,
-		'Korea': Korea,
-		'World': World,
-	}
-	return render(request, 'covid_web/precautions__.html', context)
 
 
 def status(request):

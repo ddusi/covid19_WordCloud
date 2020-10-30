@@ -3,5 +3,6 @@ __pycache__
 article.csv
 Covid_web/static/covid_WordCloud.jpg
 /db.sqlite3
+.sqlite3
 Covid_web/static/covid_WordCloud.png
 Covid_web/static/covid_WordCloud1.png

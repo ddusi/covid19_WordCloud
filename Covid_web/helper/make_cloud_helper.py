@@ -16,7 +16,7 @@ def make_cloud_helper(path):
 	# text = open(os.path.join('article.txt'), encoding="utf-8").read()
 	article_pd = pd.read_csv('article.csv')
 
-	# string preprocessing
+	# NLTK string preprocessing
 	headlines = list(article_pd['headline'])
 	headlines = '.'.join(headlines)
 	letters_only = re.sub('[^a-zA-Z]', ' ', headlines)
@@ -27,6 +27,7 @@ def make_cloud_helper(path):
 	stop_words = ['daily', 'roundup', 'update', 'july', 'sunday', 'aug', 'list', 'line']
 	name_list = [t[0] for t in tagged if t[1] != "VB" and t[0] not in stop_words and t[1] == "NN"]
 	fd_names = FreqDist(name_list)
+
 
 	# image dataization
 	covid_color = np.array(Image.open(os.path.join("Covid_web/static", "covid_person_new.jpg")))
@@ -46,8 +47,5 @@ def make_cloud_helper(path):
 	# wc.generate(text)
 	image_colors = ImageColorGenerator(covid_color)
 	wc.recolor(color_func=image_colors)
-	# plt.figure(figsize=(30, 15))
-	plt.imshow(wc, interpolation="bilinear")
-	plt.axis('off')
 	wc.to_file("Covid_web/static/" + path)
 

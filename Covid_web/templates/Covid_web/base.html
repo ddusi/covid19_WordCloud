@@ -21,6 +21,9 @@
         </div>
         <ul class="navigation__links--container">
           <li class="navigation__link">
+            <a href="{% url 'covid:home' %}">Home</a>
+          </li>
+          <li class="navigation__link">
             <a href="{% url 'covid:news' %}">News</a>
           </li>
           <li class="navigation__link">
@@ -30,7 +33,7 @@
             <a href="{% url 'covid:precautions' %}">Precautions</a>
           </li>
           <li class="navigation__link">
-            <a href="">Status</a>
+            <a href="{% url 'covid:status' %}">Status</a>
           </li>
         </ul>
       </nav>

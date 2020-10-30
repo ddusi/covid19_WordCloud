@@ -1,11 +1,39 @@
-{% extends 'Covid_web/base.html' %}
-{% load static %}
-{% block content %}
-
-<section role="main" class="info--main-section">
-  <h1 class="info__title">COVID-19 Status Data</h1>
-  <div class="info__contents">
-
+{% extends 'Covid_web/base.html' %} {% load static %} {% block content %}
+<section role="main" class="status--main-section">
+  <div class="status__dashboard">
+    <h1 class="dashboard__title">COVID-19 Dashboard</h1>
+    <div class="dashboard__chart--container">
+      <h3 class="chart__name">Sample Chart #1</h3>
+      <img
+        alt="COVID-19 Visual Map"
+        class="chart__graphic"
+        src="/static/covid_visual-map.png"
+      />
+    </div>
+    <div class="dashboard__chart--container">
+      <h3 class="chart__name">Sample Chart #2</h3>
+      <img
+        alt="COVID-19 Global Cumulative Cases"
+        class="chart__graphic"
+        src="/static/covid_cumulative-cases.png"
+      />
+    </div>
+    <div class="dashboard__chart--container">
+      <h3 class="chart__name">Sample Chart #3</h3>
+      <img
+        alt="COVID-19 Global Cumulative Cases"
+        class="chart__graphic"
+        src="/static/covid_cumulative-cases.png"
+      />
+    </div>
+    <div class="dashboard__chart--container">
+      <h3 class="chart__name">Sample Chart #4</h3>
+      <img
+        alt="COVID-19 Visual Map"
+        class="chart__graphic"
+        src="/static/covid_visual-map.png"
+      />
+    </div>
   </div>
 </section>
 {% endblock %}
