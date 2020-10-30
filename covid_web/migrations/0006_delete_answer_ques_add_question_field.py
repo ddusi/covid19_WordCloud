@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0005_rename_answer_text_and_add_model_options'),
+        ('covid_web', '0005_rename_answer_text_and_add_model_options'),
     ]
 
     operations = [
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             model_name='answer',
             name='question',
             field=models.ForeignKey(default=2, on_delete=django.db.models.deletion.CASCADE, related_name='answers',
-                                    to='Covid_web.question'),
+                                    to='covid_web.question'),
             preserve_default=False,
         ),
     ]

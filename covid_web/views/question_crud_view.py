@@ -1,6 +1,6 @@
 from django.views.generic import View
 from ..forms import QuestionForm
-from Covid_web.models import Question
+from covid_web.models import Question
 from django.shortcuts import render, redirect
 
 

@@ -40,9 +40,9 @@ def home(request):
 
 
 def news(request):
-	global article
-	context = article
-	return render(request, 'covid_web/news.html', context)
+	article_pd = pd.read_csv('article.csv')
+	article = article_pd.to_dict()
+	return render(request, 'covid_web/news.html', article)
 
 
 def covid_info(request):

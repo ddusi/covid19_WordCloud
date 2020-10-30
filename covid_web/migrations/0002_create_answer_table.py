@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0001_initial'),
+        ('covid_web', '0001_initial'),
     ]
 
     operations = [

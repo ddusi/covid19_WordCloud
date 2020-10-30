@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class CovidWebConfig(AppConfig):
-    name = 'Covid_web'
+    name = 'covid_web'

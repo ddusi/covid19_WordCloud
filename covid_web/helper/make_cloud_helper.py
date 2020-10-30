@@ -12,7 +12,7 @@ from wordcloud import WordCloud, ImageColorGenerator
 
 
 def make_cloud_helper(path):
-	os.system('scrapy runspider Covid_web/scrapy/covid/spiders/covid_spider.py')
+	os.system('scrapy runspider covid_web/scrapy/covid/spiders/covid_spider.py')
 	# text = open(os.path.join('article.txt'), encoding="utf-8").read()
 	article_pd = pd.read_csv('article.csv')
 
@@ -30,7 +30,7 @@ def make_cloud_helper(path):
 
 
 	# image dataization
-	covid_color = np.array(Image.open(os.path.join("Covid_web/static", "covid_person_new.jpg")))
+	covid_color = np.array(Image.open(os.path.join("covid_web/static", "covid_person_new.jpg")))
 	covid_mask = covid_color.copy()
 	covid_mask[covid_mask.sum(axis=2) == 0] = 255
 
@@ -47,5 +47,5 @@ def make_cloud_helper(path):
 	# wc.generate(text)
 	image_colors = ImageColorGenerator(covid_color)
 	wc.recolor(color_func=image_colors)
-	wc.to_file("Covid_web/static/" + path)
+	wc.to_file("covid_web/static/" + path)
 

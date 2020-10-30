@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0006_delete_answer_ques_add_question_field'),
+        ('covid_web', '0006_delete_answer_ques_add_question_field'),
     ]
 
     operations = [

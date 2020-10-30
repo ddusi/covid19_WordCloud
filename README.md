@@ -62,6 +62,6 @@ python manage.py runserver
 
 5. 서버 접속 URLs
 ```
-http://localhost:8000/Covid_web/
+http://localhost:8000/
 ```
 

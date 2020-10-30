@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0003_question_add_create_update_field'),
+        ('covid_web', '0003_question_add_create_update_field'),
     ]
 
     operations = [
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('answer', models.CharField(max_length=200)),
-                ('ques', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Covid_web.question')),
+                ('ques', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='covid_web.question')),
             ],
         ),
     ]

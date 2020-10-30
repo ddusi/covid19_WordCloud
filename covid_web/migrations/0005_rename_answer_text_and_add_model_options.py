@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Covid_web', '0004_delete_answer_and_remake'),
+        ('covid_web', '0004_delete_answer_and_remake'),
     ]
 
     operations = [
