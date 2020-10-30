@@ -32,7 +32,7 @@ def make():
 	timer.start()
 
 
-make()
+# make()
 
 
 def home(request):
