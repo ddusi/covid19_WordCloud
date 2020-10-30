@@ -12,5 +12,5 @@ class CovidWebConfig(AppConfig):
 		if 'runserver' not in sys.argv:
 			return True
 
-		process_one = Process(target=make_data)
-		process_one.start()
+		# process_one = Process(target=make_data)
+		# process_one.start()
