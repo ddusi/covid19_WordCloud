@@ -6,7 +6,10 @@
       코로나바이러스 감염증 관련 최신 뉴스 트렌드를
     </p>
     <p class="welcome-message__body">Word Cloud로 시각화해 제공합니다.</p>
-    <button action="{% url 'covid:news' %}" class="welcome-message__link-news">News >></button>
+    <form method="post" action="{% url 'covid:news' %}">
+        {% csrf_token %}
+        <button type='submit' class="welcome-message__link-news">News >></button>
+    </form>
   </div>
   <div class="home__data-visualization--container">
     <div class="data-visualization--container">
@@ -24,7 +27,10 @@
       />
     </div>
     <div class="data-visualization__link-status--container">
-      <button class="data-visualization__link-status">More >></button>
+    <form method="post" action="{% url 'covid:status' %}">
+        {% csrf_token %}
+        <button type='submit' class="data-visualization__link-status">More >></button>
+    </form>
     </div>
   </div>
 </section>
