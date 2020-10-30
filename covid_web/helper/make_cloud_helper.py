@@ -12,7 +12,6 @@ from wordcloud import WordCloud, ImageColorGenerator
 
 
 def make_cloud_helper(path):
-	os.system('scrapy runspider covid_web/scrapy/covid/spiders/covid_spider.py')
 	# text = open(os.path.join('article.txt'), encoding="utf-8").read()
 	article_pd = pd.read_csv('article.csv')
 
