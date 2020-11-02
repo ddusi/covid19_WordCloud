@@ -1,10 +1,10 @@
 from django.shortcuts import render
 import pandas as pd
 from ..helper.covid19_world_confirmation_helper import remove_comma, covid_confirmation
-from ..helper.save_dataframe_helper import return_dataframe
+# from ..helper.save_dataframe_helper import return_data_frame
 
 def status(request):
-	df = return_dataframe('world_confirmation')
+	# df = return_data_frame('world_confirmation')
 
 	df['Total Rank'] = df['Total'].apply(remove_comma).astype(int)
 	df['Total Rank'] = df['Total Rank'] / df['Total Rank'].sum() * 100
