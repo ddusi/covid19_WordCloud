@@ -2,8 +2,8 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen, Request
 import ssl
 import pandas as pd
-from .save_dataframe_helper import save_dataframe
-
+from covid_web.helper.save_dataframe_helper import save_data_frame
+from datetime import date
 
 def remove_comma(x):
 	return x.replace(',', '')
@@ -46,7 +46,7 @@ def covid_confirmation():
 			World['Deaths'].append(World_Num[n])
 
 	df = pd.DataFrame(World)
-	from datetime import date
+
 	df['created_at'] = pd.to_datetime(str(date.today()), format='%Y-%m-%d')
 
-	save_dataframe(df, 'world_confirmation')
+	save_data_frame(df, 'world_confirmation')
