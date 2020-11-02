@@ -18,3 +18,17 @@ class Answer(models.Model):
 
     class Meta:
         ordering=['id']
+
+
+class WorldConfirmation(models.Model):
+    index = models.IntegerField(null=True)
+    Area = models.TextField(null=True)
+    Total = models.TextField(null=True)
+    Cases = models.TextField(null=True)
+    Recovered = models.TextField(null=True)
+    Deaths = models.TextField(null=True)
+    created_at = models.DateField(null=True)
+
+    class Meta:
+        db_table = 'world_confirmation'
+
