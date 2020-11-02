@@ -27,7 +27,7 @@ class WorldConfirmation(models.Model):
     Cases = models.TextField(null=True)
     Recovered = models.TextField(null=True)
     Deaths = models.TextField(null=True)
-    created_at = models.DateField(null=True)
+    created_at = models.DateTimeField(null=True)
 
     class Meta:
         db_table = 'world_confirmation'
