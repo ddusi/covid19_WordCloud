@@ -1,14 +1,17 @@
 from django.shortcuts import render
 import pandas as pd
-from covid_web.helper.covid19_world_confirmation_helper import remove_comma, covid_confirmation
+from covid_web.helper.covid19_world_confirmation_helper import remove_comma
 from covid_web.helper.save_dataframe_helper import return_data_frame
 import plotly.express as px
-from plotly.offline import plot
+
+
+# from plotly.offline import plot
 # import plotly.offline.offline as plot
 
 def status(request):
 	df = return_data_frame('world_confirmation')
 
+	df.drop([0], inplace=True)  # delete would data
 	df['Total Rank'] = df['Total'].apply(remove_comma).astype(int)
 	df['Total Rank'] = df['Total Rank'] / df['Total Rank'].sum() * 100
 
