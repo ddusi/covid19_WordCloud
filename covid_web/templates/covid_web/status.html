@@ -1,4 +1,11 @@
 {% extends 'covid_web/base.html' %} {% load static %} {% block content %}
+
+{% if confirmation_graph %}
+{{ confirmation_graph|safe }}
+{% else %}
+<p>No graph was provided.</p>
+{% endif %}
+
 <section role="main" class="status--main-section">
   <div class="status__dashboard">
     <h1 class="dashboard__title">COVID-19 Dashboard</h1>
@@ -17,7 +24,6 @@
         class="chart__graphic"
         src="/static/covid_cumulative-cases.png"
       />
-        {{ confirmation_graph }}
     </div>
     <div class="dashboard__chart--container">
       <h3 class="chart__name">Sample Chart #3</h3>
