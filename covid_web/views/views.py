@@ -6,20 +6,16 @@ from ..helper.make_cloud_helper import make_cloud_helper
 from multiprocessing import Process, current_process
 import pandas as pd
 import os
+#
+# flag = True
+# article = {}
+# cont = []
+# pre = []
+# Korea = {}
+# World = {}
 
-flag = True
-article = {}
-cont = []
-pre = []
-Korea = {}
-World = {}
 
 
-def make_data():
-	os.system('scrapy runspider covid_web/scrapy/covid/spiders/covid_spider.py')
-	global Korea, World
-	make_cloud_helper('covid_WordCloud.png')
-	Korea, World = Covid_confirmed()
 
 
 def home(request):
@@ -34,12 +30,11 @@ def news(request):
 
 
 def covid_info(request):
-	global cont
-	context = {
-		'cont': cont[1:-21]
-	}
-	return render(request, 'covid_web/covid_info.html', context)
+	# global cont
+	# context = {
+	# 	'cont': cont[1:-21]
+	# }
+	return render(request, 'covid_web/covid_info.html')
 
 
-def status(request):
-	return render(request, 'covid_web/status.html')
+
