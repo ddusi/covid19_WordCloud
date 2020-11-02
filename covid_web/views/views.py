@@ -41,5 +41,4 @@ def covid_info(request):
 	return render(request, 'covid_web/covid_info.html', context)
 
 
-def status(request):
-	return render(request, 'covid_web/status.html')
+
