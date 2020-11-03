@@ -53,3 +53,16 @@ def covid_confirmation():
 	df['created_at'] = pd.to_datetime(str(date.today()), format='%Y-%m-%d')
 
 	save_data_frame(df, 'world_confirmation')
+
+
+# def get_world_trends_data():
+# 	context = ssl._create_unverified_context()
+# 	headers = {
+# 		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36'}
+# 	URL = 'https://en.wikipedia.org/wiki/COVID-19_pandemic_by_country_and_territory'
+# 	req = Request(url=URL, headers=headers)
+#
+# 	html = urlopen(req, context=context)
+# 	soup = BeautifulSoup(html, 'html.parser')
+
+
