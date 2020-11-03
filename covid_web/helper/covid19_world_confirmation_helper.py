@@ -16,6 +16,7 @@ def covid_confirmation():
 		'Cases': [],
 		'Recovered': [],
 		'Deaths': [],
+		'Trends' : [],
 	}
 
 	# world
@@ -33,8 +34,10 @@ def covid_confirmation():
 	             if n.text != ''][:64]
 	World_Area = [a.text.strip() for a in
 	              World_bs.find('tbody', {'class': 'ppcUXd'}, ).findAll('th', {'class': 'l3HOY'}) if a.text != ''][:16]
+	World_Trends = ['https:'+i['src'] for i in World_bs.find('tbody', {'class': 'ppcUXd'}).find_all('img', {'class': 'nBjBX'})][:16]
 
 	World['Area'] = World_Area
+	World['Trends'] = World_Trends
 	for n in range(len(World_Num)):
 		if n % 4 == 0:
 			World['Total'].append(World_Num[n])
