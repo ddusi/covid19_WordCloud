@@ -23,6 +23,6 @@ def status(request):
 		annotations=[dict(text='Covid19', x=0.5, y=0.5, font_size=20, showarrow=False)])
 	# confirmation_graph = fig.to_html(full_html=False)
 	confirmation_graph = fig.to_html(full_html=False, default_height=500, default_width=700)
-	context = {'confirmation_graph': confirmation_graph}
+	context = {'world_data': df, 'confirmation_graph': confirmation_graph}
 
 	return render(request, 'covid_web/status.html', context)
