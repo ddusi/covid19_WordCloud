@@ -2,6 +2,7 @@
 
 {% if confirmation_graph %}
 {{ confirmation_graph|safe }}
+{{ cumulative_deaths|safe }}
 {% else %}
 <p>No graph was provided.</p>
 {% endif %}
