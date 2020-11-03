@@ -33,3 +33,16 @@ class WorldConfirmation(models.Model):
     class Meta:
         db_table = 'world_confirmation'
 
+
+class Covid19Article(models.Model):
+    index = models.IntegerField(null=True)
+    headline = models.TextField(null=True)
+    company = models.TextField(null=True)
+    url = models.TextField(null=True)
+    time = models.TextField(null=True)
+    origin_url = models.TextField(null=True)
+    created_at = models.TextField(null=True)
+
+    class Meta:
+        db_table = 'covid19_article'
+
