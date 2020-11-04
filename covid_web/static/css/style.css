@@ -578,8 +578,7 @@ section.status--main-section {
   display: grid;
   grid-template:
     'title title' auto
-    'chart-a chart-b' 1fr
-    'chart-c chart-d' 1fr /
+    'chart-a chart-b' 1fr /
     1fr 1fr;
   gap: 0.5rem 2rem;
   align-items: center;
@@ -618,20 +617,6 @@ section.status--main-section {
   grid-area: chart-b;
 }
 
-.dashboard__chart--container:nth-of-type(3) {
-  grid-area: chart-c;
-}
-
-.dashboard__chart--container:nth-of-type(4) {
-  grid-area: chart-d;
-}
-
 .chart__name {
   margin: 0 0 1rem;
-}
-
-.chart__graphic {
-  width: 100%;
-
-  object-fit: contain;
 }
