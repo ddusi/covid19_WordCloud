@@ -10,7 +10,10 @@ def save_data_frame(df, table):
 	c = conn.cursor()
 	sql = 'SELECT COUNT(created_at) FROM ' + table + ' WHERE created_at LIKE ' + '\'' + str(date.today()) + '%\''
 	# sql = 'SELECT COUNT(created_at) FROM ' + table + ' WHERE created_at LIKE ' + '\'' + '2020-11-0' + '%\''
-	data = c.execute(sql).fetchall()
+	try:
+		data = c.execute(sql).fetchall()
+	except sqlite3.OperationalError:
+		return print('-------------------------------- Error Not exist ' + table + ' --------------------------------')
 
 	if data[0][0] == 0:
 		df.to_sql(name=table, con=conn, if_exists='append', index=True)

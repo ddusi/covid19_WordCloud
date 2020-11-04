@@ -6,12 +6,15 @@ from os.path import dirname, abspath, join
 
 root_path = dirname(dirname(dirname(dirname(dirname(abspath(__file__))))))
 
-def save_data_frame(df, table):
+def save_data_frame(df: "DataFrame", table: "SQL_Table") -> print:
 	conn = sqlite3.connect(join(root_path, 'db.sqlite3'))
 	c = conn.cursor()
 	sql = 'SELECT COUNT(created_at) FROM ' + table + ' WHERE created_at LIKE ' + '\'' + str(date.today()) + '%\''
 	# sql = 'SELECT COUNT(created_at) FROM ' + table + ' WHERE created_at LIKE ' + '\'' + '2020-11-0' + '%\''
-	data = c.execute(sql).fetchall()
+	try:
+		data = c.execute(sql).fetchall()
+	except:
+		return print('-------------------------------- Not exist ' + table + ' --------------------------------')
 
 	if data[0][0] == 0:
 		df.to_sql(name=table, con=conn, if_exists='append', index=True)

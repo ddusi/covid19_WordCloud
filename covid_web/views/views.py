@@ -6,13 +6,6 @@ from ..helper.make_cloud_helper import make_cloud_helper
 from multiprocessing import Process, current_process
 import pandas as pd
 import os
-#
-# flag = True
-# article = {}
-# cont = []
-# pre = []
-# Korea = {}
-# World = {}
 
 
 
