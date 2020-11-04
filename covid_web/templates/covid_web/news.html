@@ -1,5 +1,13 @@
-{% extends 'covid_web/base.html' %} {% load index %} {% load slice %} {% load
-static %} {% block content %}
+{% extends 'covid_web/base.html' %}
+{% load static %}
+{% load index %}
+{% load slice %}
+
+{% block script %}
+<script defer src="{% static 'scripts/news.js' %}"></script>
+{% endblock %}
+
+{% block content %}
 <section role="main" class="news--main-section">
   <section class="news__wordcloud-image--container">
     <img
