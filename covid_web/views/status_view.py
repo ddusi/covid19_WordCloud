@@ -23,7 +23,7 @@ def status(request):
 		# Add annotations in the center of the donut pies.
 		annotations=[dict(text='Covid19', x=0.5, y=0.5, font_size=20, showarrow=False)])
 	# confirmation_graph = fig.to_html(full_html=False)
-	confirmation_graph = fig.to_html(full_html=False, default_height=500, default_width=700)
+	confirmation_graph = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
 	## Cumulative COVID-19 deaths on Jan 11, and first day of following months
 	data = {'month': ['jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
@@ -38,7 +38,7 @@ def status(request):
 	fig.update_layout(
 		title='Cumulative COVID-19 deaths on Jan 11, and first day of following months',
 	)
-	cumulative_deaths = fig.to_html(full_html=False, default_height=500, default_width=700)
+	cumulative_deaths = fig.to_html(full_html=False, include_plotlyjs='cdn')
 
 	context = {'world_data': df,
 	           'confirmation_graph': confirmation_graph,
