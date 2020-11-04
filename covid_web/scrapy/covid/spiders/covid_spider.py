@@ -6,7 +6,8 @@ from os.path import dirname, abspath, join
 
 root_path = dirname(dirname(dirname(dirname(dirname(abspath(__file__))))))
 
-def save_data_frame(df: "DataFrame", table: "SQL_Table") -> print:
+
+def save_data_frame(df: 'DataFrame', table: str) -> 'Success Message':
 	conn = sqlite3.connect(join(root_path, 'db.sqlite3'))
 	c = conn.cursor()
 	sql = 'SELECT COUNT(created_at) FROM ' + table + ' WHERE created_at LIKE ' + '\'' + str(date.today()) + '%\''
