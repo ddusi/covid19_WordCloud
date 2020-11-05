@@ -50,7 +50,7 @@ def get_original_url(table: str, df: 'DataFrame'):
 	for i in url_list:
 		driver.get(i)
 		time.sleep(2)
-		try:`
+		try:
 			contents_url: str = driver.current_url
 			origin_url_list.append(contents_url)
 		except common.exceptions.NoSuchElementException:
