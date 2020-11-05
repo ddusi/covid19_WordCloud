@@ -30,7 +30,7 @@
         {% for i in headline|index %}
         <tr class="article-table__article">
           <td class="article__headline-link">
-            <a href="{{url|slice:i}}" target="_blank" rel="noopener noreferrer">
+            <a href="{{url|slice:i}}" target="_blank" rel="noopener noreferrer" title="{{headline|slice:i}}">
               {{headline|slice:i}}
             </a>
           </td>
