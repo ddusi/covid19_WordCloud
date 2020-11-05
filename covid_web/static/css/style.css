@@ -18,7 +18,9 @@ body {
     1fr;
 
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
+  /* min-height: 100vh; */
+  overflow: hidden;
   margin: 0;
   padding: 0;
 
@@ -465,11 +467,28 @@ section.info--main-section {
   padding: 0.5rem 1rem;
   border: 1px solid var(--color-2);
   border-radius: 4px;
+  transition: 0.4s all linear;
+  opacity: 0;
+  transform: translateX(1rem);
 
   background: var(--color-2);
   color: var(--color-5);
   font-weight: bold;
   text-align: left;
+
+  animation-name: side-in;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.content--container.hidden {
+  display: none;
+}
+
+.content--container[open] summary ~ * {
+  animation-name: open-detail;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
 }
 
 .content__body {
@@ -479,11 +498,13 @@ section.info--main-section {
   font-weight: normal;
 }
 
-@keyframes side-in {
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.info-contents__page-buttons--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
 }
 
 /* Precautions page */
@@ -671,4 +692,23 @@ section.status--main-section {
 
 .chart__name {
   margin: 0 0 1rem;
+}
+
+/* Animations */
+@keyframes side-in {
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes open-detail {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
 }
