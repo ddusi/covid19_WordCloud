@@ -1,85 +1,123 @@
-const ARTICLES_PER_PAGE = 10;
 
-function handlePage() {
+function newsData() {
+  let articles = [];
+
+  function saveArticleData(list) {
+    const children = [...list].map(({ children }) => children);
+    articles = children.map(([headline, company, time]) => {
+      const url = headline.querySelector('a').href;
+
+      return {
+        text: headline.textContent.trim(),
+        href: url,
+        company: company.textContent,
+        time: time.textContent,
+      };
+    });
+  }
+  function getArticles() {
+    return articles;
+  }
+
   let pageNumber = 1;
-
+  let maxPageNumber = 1;
   function nextPage() {
-    pageNumber++;
-    console.log(`Current page is: ${pageNumber}`);
-  }
-
-  function previousPage() {
-    pageNumber--;
-    console.log(`Current page is: ${pageNumber}`);
-  }
-
-  function getCurrentPage(operation) {
-    const NEXT_PAGE = 'N';
-    const PREVIOUS_PAGE = 'P';
-
-    switch (operation) {
-      case NEXT_PAGE:
-        nextPage();
-        break;
-      case PREVIOUS_PAGE:
-        previousPage();
-        break;
+    if (pageNumber >= maxPageNumber) {
+      console.error('This is the last page');
+      return;
     }
 
+    pageNumber++;
+  }
+  function previousPage() {
+    if (pageNumber <= 1) {
+      console.error('This is the first page');
+      return;
+    }
+
+    pageNumber--;
+  }
+  function setMaxPageNumber(articlesPerPage = 10) {
+    maxPageNumber = Math.ceil(articles.length / articlesPerPage);
+  }
+  function getMaxPageNumber() {
+    return maxPageNumber;
+  }
+  function getCurrentPage() {
     return pageNumber;
   }
 
-  return getCurrentPage;
-}
+  return {
+    saveArticleData,
+    getArticles,
+    previousPage,
+    nextPage,
+    setMaxPageNumber,
+    getMaxPageNumber,
+    getCurrentPage,
+  };
+};
 
-function renderArticles(list, pageNumber, articlesPerPage = ARTICLES_PER_PAGE) {
-  if (list.length === 0) return;
+function newsView() {
+  function renderArticles(list, currentPage, articlesPerPage = 10) {
+    if (list.length === 0) {
+      console.error('The article list is empty!');
+      return;
+    }
 
-  const articles = list[0].parentNode.children;
-  const START_INDEX = (pageNumber - 1) * articlesPerPage;
-  const END_INDEX = pageNumber * articlesPerPage;
+    const articles = list[0].parentNode.children;
+    const START_INDEX = (currentPage - 1) * articlesPerPage;
+    const END_INDEX = currentPage * articlesPerPage;
 
-  for (let i = 0, len = articles.length; i < len; i++) {
-    let article = articles[i];
+    for (let i = 0, len = articles.length; i < len; i++) {
+      let article = articles[i];
 
-    if (i < START_INDEX || i >= END_INDEX) {
-      article.classList.add('hidden');
-    } else {
-      article.classList.remove('hidden');
+      if (i < START_INDEX || i >= END_INDEX) {
+        article.classList.add('hidden');
+      } else {
+        article.classList.remove('hidden');
+      }
     }
   }
-}
 
-function createPageButtons(list, articlesPerPage = ARTICLES_PER_PAGE) {
-  const LIST_LENGTH = list.length;
-  if (LIST_LENGTH <= articlesPerPage) return false;
+  function renderPageButtons(maxPageNumber, parentElm) {
+    if (maxPageNumber <= 1) {
+      console.log('Page buttons are not created as articles fit in a single page.');
+      return;
+    }
 
-  let container = document.createElement('div');
-  const PAGES_COUNT = Math.ceil(LIST_LENGTH / articlesPerPage);
+    let container = document.createElement('div');
+    const CONTAINER_CLASSNAME = 'article-list__page-buttons--container';
+    container.className = CONTAINER_CLASSNAME;
 
-  for (let i = 1; i <= PAGES_COUNT; i++) {
-    let pageButton = document.createElement('span');
-    pageButton.textContent = i;
-    container.appendChild(pageButton);
+    for (let i = 1; i <= maxPageNumber; i++) {
+      let pageButton = document.createElement('span');
+      pageButton.textContent = i;
+      container.appendChild(pageButton);
+    }
+
+    parentElm.appendChild(container);
   }
 
-  const CONTAINER_CLASSNAME = 'article-list__page-buttons--container';
-  container.className = CONTAINER_CLASSNAME;
-
-  return container;
-}
-
-function displayPageButtons(list, parent) {
-  const BUTTONS = createPageButtons(list);
-  if (!BUTTONS) return;
-
-  parent.appendChild(BUTTONS);
+  return {
+    renderArticles,
+    renderPageButtons,
+  };
 }
 
 function init() {
   const ARTICLES = document.querySelectorAll('.article-table__article');
   const ARTICLE_SECTION = document.querySelector('.news__article-list--container');
-  displayPageButtons(ARTICLES, ARTICLE_SECTION);
+  const ARTICLES_PER_PAGE = 10;
+
+  const NEWS_DATA = newsData();
+  NEWS_DATA.saveArticleData(ARTICLES);
+  NEWS_DATA.setMaxPageNumber(ARTICLES_PER_PAGE);
+
+  const RENDER = newsView();
+  RENDER.renderArticles(ARTICLES, NEWS_DATA.getCurrentPage(), ARTICLES_PER_PAGE);
+  debugger;
+  RENDER.renderPageButtons(NEWS_DATA.getMaxPageNumber(), ARTICLE_SECTION);
 }
 
 document.addEventListener('DOMContentLoaded', init);
