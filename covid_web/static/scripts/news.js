@@ -37,6 +37,9 @@ function newsData() {
 
     pageNumber--;
   }
+  function setPage(number) {
+    pageNumber = number;
+  }
   function setMaxPageNumber(articlesPerPage = 10) {
     maxPageNumber = Math.ceil(articles.length / articlesPerPage);
   }
@@ -52,6 +55,7 @@ function newsData() {
     getArticles,
     previousPage,
     nextPage,
+    setPage,
     setMaxPageNumber,
     getMaxPageNumber,
     getCurrentPage,
@@ -59,7 +63,7 @@ function newsData() {
 };
 
 function newsView() {
-  function renderArticles(list, currentPage, articlesPerPage = 10) {
+  function displayArticles(list, currentPage, articlesPerPage = 10) {
     if (list.length === 0) {
       console.error('The article list is empty!');
       return;
@@ -80,44 +84,94 @@ function newsView() {
     }
   }
 
-  function renderPageButtons(maxPageNumber, parentElm) {
+  const PAGE_BUTTON_CONTAINER_CLASSNAME = 'article-list__page-buttons--container';
+  const PAGE_BUTTON_CLASSNAME = 'page-buttons__button';
+  function displayPageButtons(maxPageNumber, currentPage, parentElm) {
     if (maxPageNumber <= 1) {
       console.log('Page buttons are not created as articles fit in a single page.');
       return;
     }
 
     let container = document.createElement('div');
-    const CONTAINER_CLASSNAME = 'article-list__page-buttons--container';
-    container.className = CONTAINER_CLASSNAME;
+    container.className = PAGE_BUTTON_CONTAINER_CLASSNAME;
 
     for (let i = 1; i <= maxPageNumber; i++) {
       let pageButton = document.createElement('span');
       pageButton.textContent = i;
+      pageButton.className = PAGE_BUTTON_CLASSNAME;
       container.appendChild(pageButton);
     }
 
     parentElm.appendChild(container);
   }
 
+  function emphasizeCurrentPage(currentPage) {
+    const buttons = document.querySelectorAll(`.${PAGE_BUTTON_CLASSNAME}`);
+
+    for (let i = 0, len = buttons.length; i < len; i++) {
+      if (i === currentPage - 1) {
+        buttons[i].classList.add('active');
+      } else {
+        buttons[i].classList.remove('active');
+      }
+    }
+  }
+
   return {
-    renderArticles,
-    renderPageButtons,
+    displayArticles,
+    displayPageButtons,
+    emphasizeCurrentPage,
+    PAGE_BUTTON_CLASSNAME,
+    PAGE_BUTTON_CONTAINER_CLASSNAME,
   };
 }
 
-function init() {
+function newsController() {
   const ARTICLES = document.querySelectorAll('.article-table__article');
   const ARTICLE_SECTION = document.querySelector('.news__article-list--container');
   const ARTICLES_PER_PAGE = 10;
 
   const NEWS_DATA = newsData();
-  NEWS_DATA.saveArticleData(ARTICLES);
-  NEWS_DATA.setMaxPageNumber(ARTICLES_PER_PAGE);
+  function handleData() {
+    NEWS_DATA.saveArticleData(ARTICLES);
+    NEWS_DATA.setMaxPageNumber(ARTICLES_PER_PAGE);
+  }
 
-  const RENDER = newsView();
-  RENDER.renderArticles(ARTICLES, NEWS_DATA.getCurrentPage(), ARTICLES_PER_PAGE);
-  debugger;
-  RENDER.renderPageButtons(NEWS_DATA.getMaxPageNumber(), ARTICLE_SECTION);
+  const NEWS_VIEW = newsView();
+  function firstRender() {
+    NEWS_VIEW.displayArticles(ARTICLES, NEWS_DATA.getCurrentPage(), ARTICLES_PER_PAGE);
+    NEWS_VIEW.displayPageButtons(NEWS_DATA.getMaxPageNumber(), NEWS_DATA.getCurrentPage(), ARTICLE_SECTION);
+    NEWS_VIEW.emphasizeCurrentPage(NEWS_DATA.getCurrentPage());
+  }
+  function updateRender() {
+    NEWS_VIEW.displayArticles(ARTICLES, NEWS_DATA.getCurrentPage(), ARTICLES_PER_PAGE);
+    NEWS_VIEW.emphasizeCurrentPage(NEWS_DATA.getCurrentPage());
+  }
+
+  function activateButtons() {
+    const BUTTON_CONTAINER = document.querySelector(`.${NEWS_VIEW.PAGE_BUTTON_CONTAINER_CLASSNAME}`);
+    BUTTON_CONTAINER.addEventListener('click', ({ target }) => {
+      if (target.className !== NEWS_VIEW.PAGE_BUTTON_CLASSNAME) return;
+
+      const SELECTED_PAGE = parseInt(target.textContent);
+      NEWS_DATA.setPage(SELECTED_PAGE);
+      updateRender();
+    })
+  }
+
+  return {
+    handleData,
+    firstRender,
+    updateRender,
+    activateButtons,
+  };
+}
+
+function init() {
+  const CONTROLLER = newsController();
+  CONTROLLER.handleData();
+  CONTROLLER.firstRender();
+  CONTROLLER.activateButtons();
 }
 
 document.addEventListener('DOMContentLoaded', init);
