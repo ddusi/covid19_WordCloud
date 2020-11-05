@@ -12,9 +12,10 @@ def start_get_data():
 	process_one.start()
 	process_two.start()
 	process_one.join()
-	print("-------------------------------- Finish make_data --------------------------------")
+	print("-------------------------------- Finish Get covid19 article & Make WordCloud  --------------------------------")
 	process_two.join()
-	print("-------------------------------- Finish covid_confirmation --------------------------------")
+	print("-------------------------------- Finish covid19_confirmation --------------------------------")
+	print("-------------------------------- End --------------------------------")
 
 def main():
 	parser = argparse.ArgumentParser()

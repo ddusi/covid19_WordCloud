@@ -11,7 +11,7 @@ class QuestionCRUDView(View):
 		self.questions = Question.objects
 		self.form = QuestionForm()
 
-	def dispatch(self, *args, **kwargs):
+	def dispatch(self, *args, **kwargs: '_method.put or delete'):
 		method = self.request.POST.get('_method', '').lower()
 		if method == 'put':
 			return self.put(*args, **kwargs)
