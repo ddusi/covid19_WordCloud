@@ -1,31 +1,13 @@
 import scrapy
 import pandas as pd
-import sqlite3
 from datetime import date
+import sqlite3
 from os.path import dirname, abspath, join
-
+import sys
 root_path = dirname(dirname(dirname(dirname(dirname(abspath(__file__))))))
+sys.path.append(join(root_path, 'covid_web', 'helper'))
+from get_original_url_helper import get_original_url
 
-
-def save_data_frame(df: 'DataFrame', table: str) -> 'Success Message':
-	conn = sqlite3.connect(join(root_path, 'db.sqlite3'))
-	c = conn.cursor()
-	sql = 'SELECT COUNT(created_at) FROM ' + table + ' WHERE created_at LIKE ' + '\'' + str(date.today()) + '%\''
-	# sql = 'SELECT COUNT(created_at) FROM ' + table + ' WHERE created_at LIKE ' + '\'' + '2020-11-0' + '%\''
-	try:
-		data = c.execute(sql).fetchall()
-	except:
-		return print('-------------------------------- Not exist ' + table + ' --------------------------------')
-
-	if data[0][0] == 0:
-		df.to_sql(name=table, con=conn, if_exists='append', index=True)
-		conn.close()
-		return print('-------------------------------- ' + str(
-			date.today()) + ' success save ' + table + ' --------------------------------')
-	else:
-		conn.close()
-		return print('-------------------------------- ' + str(
-			date.today()) + ' Already existing data ' + table + ' --------------------------------')
 
 
 class CovidSpider(scrapy.Spider):
@@ -35,20 +17,21 @@ class CovidSpider(scrapy.Spider):
 	]
 
 	def parse(self, response):
-		dic = {'headline': [], 'company': [], 'time': [], 'url': []}
-		headline = response.css('.DY5T1d::text').getall()
-		company = response.css('.wEwyrc::text').getall()
-		time = response.css('.WW6dff::text').getall()
-		urls = response.css('.DY5T1d::attr(href)').getall()
-		dic['headline'] = headline
-		dic['company'] = company
-		dic['time'] = time
-		dic['url'] = ['https://news.google.com%s' % url.split('.')[1] for url in urls]
+			dic = {'headline': [], 'company': [], 'time': [], 'url': []}
+			headline = response.css('.DY5T1d::text').getall()
+			company = response.css('.wEwyrc::text').getall()
+			time = response.css('.WW6dff::text').getall()
+			urls = response.css('.DY5T1d::attr(href)').getall()
+			dic['headline'] = headline
+			dic['company'] = company
+			dic['time'] = time
+			dic['url'] = ['https://news.google.com%s' % url.split('.')[1] for url in urls]
+			dic['index'] = [i for i in range(len(urls))]
+			# dic.drop(columns='Unnamed: 0',inplace=True)
 
-		# dic.drop(columns='Unnamed: 0',inplace=True)
+			# pd.DataFrame(dic).to_csv('article.csv')
 
-		# pd.DataFrame(dic).to_csv('article.csv')
-
-		df = pd.DataFrame(dic)
-		df['created_at'] = pd.to_datetime(str(date.today()), format='%Y-%m-%d')
-		save_data_frame(df, 'covid19_article')
+			df = pd.DataFrame(dic)
+			df['created_at'] = pd.to_datetime(str(date.today()), format='%Y-%m-%d')
+			# save_data_frame(df, 'covid19_article')
+			get_original_url('covid19_article', df)
