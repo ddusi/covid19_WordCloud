@@ -2,8 +2,7 @@
 __pycache__
 article.csv
 covid_web/static/covid_WordCloud.jpg
-/db.sqlite3
-.sqlite3
+
 covid_web/static/covid_WordCloud.png
 covid_web/static/covid_WordCloud1.png
 .vscode
