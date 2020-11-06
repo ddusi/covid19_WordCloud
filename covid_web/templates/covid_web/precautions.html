@@ -1,6 +1,10 @@
 {% extends 'covid_web/base.html' %}
 {% load static %}
 
+{% block script %}
+<script defer src="{% static 'scripts/precautions.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <section role="main" class="precautions--main-section">
   <div class="precautions__precautions-list">
