@@ -1,4 +1,7 @@
-{% extends 'covid_web/base.html' %} {% load static %} {% block content %}
+{% extends 'covid_web/base.html' %}
+{% load static %}
+
+{% block content %}
 <section role="main" class="precautions--main-section">
   <div class="precautions__precautions-list">
     <h1 class="precautions-list__title">To prevent the spread of COVID-19</h1>
@@ -7,7 +10,7 @@
       appropriate precautions. Follow advice provided by your local health
       authority.
     </p>
-    <ul class="precuations-list__container">
+    <ul class="precautions-list__container">
       <li class="precautions-list__instruction">
         Clean your hands often. Use soap and water, or an alcohol-based hand
         rub.
@@ -48,24 +51,30 @@
   </div>
 
   <div class="precautions__questions-list">
-    <h1 class="questions-list__title">QnA</h1>
-    {% if questions %} {% for question in questions.all %}
-    <form action="" method="post" class="question--container">
-      {% csrf_token %}
-      <p class="question__body">{{ question.question_text }}</p>
-      <input type="hidden" name="_method" value="delete" />
-      <input type="hidden" value="{{ question.pk }}" name="pk" />
-      <input
-        class="question__password-input"
-        type="password"
-        name="password"
-        required
-      />
-      <button class="question__password-submit" type="submit">삭제</button>
-    </form>
-    {% endfor %} {% else %}
-    <h3 class="precautions__message-no-question">There is no question</h3>
-    {% endif %}
+    <div class="questions-list--container">
+      <h1 class="questions-list__title">QnA</h1>
+      <div class="questions-list__body">
+        {% if questions %}
+          {% for question in questions.all %}
+        <form action="" method="post" class="question--container">
+          {% csrf_token %}
+          <p class="question__body">{{ question.question_text }}</p>
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" value="{{ question.pk }}" name="pk" />
+          <input
+            class="question__password-input"
+            type="password"
+            name="password"
+            required
+          />
+          <button class="question__password-submit" type="submit">삭제</button>
+        </form>
+          {% endfor %}
+        {% else %}
+        <h3 class="precautions__message-no-question">There is no questions</h3>
+        {% endif %}
+      </div>
+    </div>
     <form action="" method="post" class="questions-list__ask">
       <h1 class="ask__title">Ask Questions</h1>
       {% csrf_token %}
