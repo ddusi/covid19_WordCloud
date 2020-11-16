@@ -57,7 +57,7 @@ def get_original_url(table: str, df: 'DataFrame'):
 			origin_url_list.append('')
 			pass
 		count += 1
-		print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ' + count + ' / ' + len(df) + ' <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+		print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ' + str(count) + ' / ' + str(len(df)) + ' <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
 
 	# sql update
 	origin_url_dict['origin_url'] = origin_url_list
