@@ -1,14 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse_lazy
 from ..helper.get_info import Covid_confirmed
-# from ..helper.covid19_basic_and_precaution_info_crawl_helper import basic, precaution
 from ..helper.make_cloud_helper import make_cloud_helper
 from multiprocessing import Process, current_process
 import pandas as pd
 import os
-
-
-
 
 
 def home(request):
@@ -23,10 +19,6 @@ def news(request):
 
 
 def covid_info(request):
-	# global cont
-	# context = {
-	# 	'cont': cont[1:-21]
-	# }
 	return render(request, 'covid_web/covid_info.html')
 
 
