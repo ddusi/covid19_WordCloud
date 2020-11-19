@@ -12,6 +12,9 @@ import nltk
 import spacy
 import pandas as pd
 
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def tag_visible(element):
 	if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
@@ -44,7 +47,7 @@ def make_cloud_helper(name: 'file name.png', article_data: 'article_datas', imag
 	'''
 
 	# image dataization
-	covid_color = np.array(Image.open(os.path.join("covid_web/static", image_name)))
+	covid_color = np.array(Image.open(os.path.join(BASE_DIR, "covid_web/static", image_name)))
 	covid_mask = covid_color.copy()
 	covid_mask[covid_mask.sum(axis=2) == 0] = 255
 
@@ -62,12 +65,12 @@ def make_cloud_helper(name: 'file name.png', article_data: 'article_datas', imag
 	if recolor:
 		image_colors = ImageColorGenerator(covid_color)
 		wc.recolor(color_func=image_colors)
-	wc.to_file("covid_web/static/" + name)
+	wc.to_file(os.path.join(BASE_DIR, "covid_web/static/" + name))
 
 
 def return_data_frame(table: str) -> 'DataFrame':
     #conn = sqlite3.connect(settings.DATABASES['default']['NAME'])
-    conn = sqlite3.connect(os.path.join(__file__, 'db.sqlite3'))
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'db.sqlite3'))
     # sql = 'SELECT * FROM ' + table + ' WHERE created_at LIKE ' + '\'' + str(date.today()) + '%\''
     sql = 'SELECT * FROM ' + table + ' WHERE created_at LIKE ' + '\'' + '2020-11-05' + '%\''
     df = pd.read_sql(sql, index_col='index', con=conn)
@@ -84,7 +87,7 @@ def main_crawl():
 
 	# get start crawl article body
 	cnt = 0
-	for url in urls[:10]:
+	for url in urls:
 		print('------ get start data ' + str(cnt) + '/' + str(len(urls)) + '--------')
 		try:
 			html = get_crawl_body_data(url)
@@ -99,7 +102,7 @@ def main_crawl():
 	doc = nlp_wk(str(result[:50]))
 	loc = [ent.text for ent in doc.ents if ent.label_ in ['LOC']]
 	doc2 = nlp_wk(str(result[50:]))
-	loc2 = [ent.text for ent in doc.ents if ent.label_ in ['LOC']]
+	loc2 = [ent.text for ent in doc2.ents if ent.label_ in ['LOC']]
 	loc.extend(loc2)
 
 	stop_word = ['COVID-19', 'Gov', 'St', 'States', 'U.S.', 'Wood', 'The', 'A']
