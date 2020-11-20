@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import re
 import nltk
-from nltk import FreqDist
 
 from PIL import Image
 import numpy as np
@@ -36,7 +35,7 @@ def make_cloud_helper(name: 'file name.png'):
 
 	stop_words = ['daily', 'roundup', 'update', 'july', 'sunday', 'aug', 'list', 'line']
 	name_list = [t[0] for t in tagged if t[1] != "VB" and t[0] not in stop_words and t[1] == "NN"]
-	fd_names = FreqDist(name_list)
+	fd_names = nltk.FreqDist(name_list)
 
 	# image dataization
 	covid_color = np.array(Image.open(os.path.join("covid_web/static", "covid_person_new.jpg")))
