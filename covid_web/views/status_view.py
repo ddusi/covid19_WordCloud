@@ -4,6 +4,7 @@ from covid_web.helper.covid19_world_confirmation_helper import remove_comma
 from covid_web.helper.save_dataframe_helper import return_data_frame
 import plotly.express as px
 import plotly.graph_objects as go
+import plotly.io as pio
 
 
 # from plotly.offline import plot
@@ -24,6 +25,8 @@ def status(request):
 		annotations=[dict(text='Covid19', x=0.5, y=0.5, font_size=20, showarrow=False)])
 	# confirmation_graph = fig.to_html(full_html=False)
 	confirmation_graph = fig.to_html(full_html=False, include_plotlyjs='cdn')
+	pio.write_image(fig, "covid_web/static/confirmation_graph.png")
+	# fig.to_image(format='png', engine='orca')
 
 	## Cumulative COVID-19 deaths on Jan 11, and first day of following months
 	data = {'month': ['jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
@@ -39,8 +42,9 @@ def status(request):
 		title='Cumulative COVID-19 deaths on Jan 11, and first day of following months',
 	)
 	cumulative_deaths = fig.to_html(full_html=False, include_plotlyjs='cdn')
+	pio.write_image(fig, "covid_web/static/cumulative_deaths.png")
 
-	context = {'world_data': df,
+	context = {'world_data': df.to_dict(),
 	           'confirmation_graph': confirmation_graph,
 	           'cumulative_deaths': cumulative_deaths}
 
