@@ -88,7 +88,7 @@ def main_crawl():
 	# get start crawl article body
 	cnt = 0
 	for url in urls:
-		print('------ get start data ' + str(cnt) + '/' + str(len(urls)) + '--------')
+		print('-------- get start data ' + str(cnt) + '/' + str(len(urls)) + ' --------')
 		try:
 			html = get_crawl_body_data(url)
 			data_text = text_from_html(html)
@@ -116,4 +116,3 @@ def main_crawl():
 
 	# make word_cloud
 	make_cloud_helper(name='place_WordCloud.png', article_data=article_data, image_name='place_pin.png', recolor=False)
-main_crawl()
