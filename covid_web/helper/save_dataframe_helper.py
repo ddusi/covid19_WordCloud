@@ -29,7 +29,8 @@ def save_data_frame(df: 'DataFrame', table: str) -> 'Success Message':
 
 def return_data_frame(table: str) -> 'DataFrame':
 	conn = sqlite3.connect(settings.DATABASES['default']['NAME'])
-	sql = 'SELECT * FROM ' + table + ' WHERE created_at LIKE ' + '\'' + str(date.today()) + '%\''
+	# sql = 'SELECT * FROM ' + table + ' WHERE created_at LIKE ' + '\'' + str(date.today()) + '%\''
+	sql = 'SELECT * FROM ' + table + ' WHERE created_at LIKE ' + '\'' + '2020-11-05' + '%\''
 	df = pd.read_sql(sql, index_col='index', con=conn)
 	conn.close()
 	return df
