@@ -11,13 +11,13 @@ import plotly.io as pio
 # import plotly.offline.offline as plot
 
 def status(request):
-	df = return_data_frame('world_confirmation')
+	df_world_data = return_data_frame('world_confirmation')
 
-	df.drop([0], inplace=True)  # delete would data
-	df['Total Rank'] = df['Total'].apply(remove_comma).astype(int)
-	df['Total Rank'] = df['Total Rank'] / df['Total Rank'].sum() * 100
+	df_world_data.drop([0], inplace=True)  # delete would data
+	df_world_data['Total Rank'] = df_world_data['Total'].apply(remove_comma).astype(int)
+	df_world_data['Total Rank'] = df_world_data['Total Rank'] / df_world_data['Total Rank'].sum() * 100
 
-	fig = px.pie(df, values='Total Rank', names='Area', hover_name='Total')
+	fig = px.pie(df_world_data, values='Total Rank', names='Area', hover_name='Total')
 	fig.update_traces(hole=.4, hoverinfo="label+percent+name")
 	fig.update_layout(
 		title_text="World Covid19 confirmation",
@@ -44,7 +44,7 @@ def status(request):
 	cumulative_deaths = fig.to_html(full_html=False, include_plotlyjs='cdn')
 	pio.write_image(fig, "covid_web/static/cumulative_deaths.png")
 
-	context = {'world_data': df.to_dict(),
+	context = {'world_data': df_world_data.to_dict(),
 	           'confirmation_graph': confirmation_graph,
 	           'cumulative_deaths': cumulative_deaths}
 
