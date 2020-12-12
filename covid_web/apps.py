@@ -9,3 +9,4 @@ class CovidWebConfig(AppConfig):
 	def ready(self):
 		if 'runserver' not in sys.argv:
 			return True
+
