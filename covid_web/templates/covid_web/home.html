@@ -1,4 +1,6 @@
-{% extends 'covid_web/base.html' %} {% block content %}
+{% extends 'covid_web/base.html' %}
+
+{% block content %}
 <section role="main" class="home--main-section">
   <div class="home__welcome-message--container">
     <h1 class="welcome-message__title">COVID-19 Word Cloud</h1>
@@ -7,8 +9,8 @@
     </p>
     <p class="welcome-message__body">Word Cloud로 시각화해 제공합니다.</p>
     <form method="post" action="{% url 'covid:news' %}">
-        {% csrf_token %}
-        <button type='submit' class="welcome-message__link-news">News >></button>
+      {% csrf_token %}
+      <button type='submit' class="welcome-message__link-news">News >></button>
     </form>
   </div>
   <div class="home__data-visualization--container">
@@ -16,20 +18,20 @@
       <img
         alt="COVID-19 Visual Map"
         class="data-visualization__preview"
-        src="/static/covid_visual-map.png"
+        src="/static/confirmation_graph.png"
       />
     </div>
     <div class="data-visualization--container">
       <img
         alt="COVID-19 Global Cumulative Cases"
         class="data-visualization__preview"
-        src="/static/covid_cumulative-cases.png"
+        src="/static/cumulative_deaths.png"
       />
     </div>
     <div class="data-visualization__link-status--container">
     <form method="post" action="{% url 'covid:status' %}">
-        {% csrf_token %}
-        <button type='submit' class="data-visualization__link-status">More >></button>
+      {% csrf_token %}
+      <button type='submit' class="data-visualization__link-status">More >></button>
     </form>
     </div>
   </div>

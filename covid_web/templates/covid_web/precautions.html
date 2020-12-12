@@ -1,43 +1,84 @@
-{% extends 'covid_web/base.html' %} {% load static %} {% block content %}
+{% extends 'covid_web/base.html' %}
+{% load static %}
+
+{% block script %}
+<script defer src="{% static 'scripts/precautions.js' %}"></script>
+{% endblock %}
+
+{% block content %}
 <section role="main" class="precautions--main-section">
   <div class="precautions__precautions-list">
-    <h1 class="precautions-list__title">COVID-19 예방법</h1>
-    <p>
-      정확한 정보를 파악하고 적절한 예방 조치를 취하여 스스로와 주변 사람을
-      보호하세요. 현지 보건 당국의 지시를 따르세요. 코로나19 전염을 막는 방법은
-      다음과 같습니다. 손을 자주 씻으세요. 비누와 물 또는 알코올 성분의 손
-      세정제를 사용하세요. 기침 또는 재채기하는 사람으로부터 안전한 거리를
-      유지하세요. 물리적 거리두기가 불가능할 땐 마스크를 쓰세요. 눈, 코 또는
-      입을 만지지 마세요. 기침 또는 재채기를 할 때는 화장지를 이용하거나
-      팔꿈치를 구부려 코와 입을 가리세요. 몸이 좋지 않다면 집에서 쉬세요. 열,
-      기침, 호흡 곤란 증상이 있다면 의사의 진료를 받아야 합니다. 미리 연락하면
-      의료진이 신속하게 적절한 의료기관으로 연결해 드릴 수 있습니다. 본인을
-      보호하고 바이러스 확산과 그 밖의 감염을 방지하기 위한 조치입니다. 마스크
-      마스크를 쓰면 바이러스의 확산을 방지하는 데 도움이 될 수 있습니다. 단,
-      마스크만으로는 코로나19 감염을 막을 수 없으며 물리적 거리두기와 손 위생
-      유지를 병행해야 합니다. 현지 보건 당국의 지시를 따르세요.
+    <h1 class="precautions-list__title">To prevent the spread of COVID-19</h1>
+    <p class="precautions-list__description">
+      Protect yourself and others around you by knowing the facts and taking
+      appropriate precautions. Follow advice provided by your local health
+      authority.
+    </p>
+    <ul class="precautions-list__container">
+      <li class="precautions-list__instruction">
+        Clean your hands often. Use soap and water, or an alcohol-based hand
+        rub.
+      </li>
+      <li class="precautions-list__instruction">
+        Maintain a safe distance from anyone who is coughing or sneezing.
+      </li>
+      <li class="precautions-list__instruction">
+        Wear a mask when physical distancing is not possible.
+      </li>
+      <li class="precautions-list__instruction">
+        Don’t touch your eyes, nose or mouth.
+      </li>
+      <li class="precautions-list__instruction">
+        Cover your nose and mouth with your bent elbow or a tissue when you
+        cough or sneeze.
+      </li>
+      <li class="precautions-list__instruction">
+        Stay home if you feel unwell.
+      </li>
+      <li class="precautions-list__instruction">
+        If you have a fever, cough and difficulty breathing, seek medical
+        attention.
+      </li>
+    </ul>
+    <p class="precautions-list__description">
+      Calling in advance allows your healthcare provider to quickly direct you
+      to the right health facility. This protects you, and prevents the spread
+      of viruses and other infections.
+    </p>
+    <h3 class="precautions-list__topic">Masks</h3>
+    <p class="precautions-list__description">
+      Masks can help prevent the spread of the virus from the person wearing the
+      mask to others. Masks alone do not protect against COVID-19, and should be
+      combined with physical distancing and hand hygiene. Follow the advice
+      provided by your local health authority.
     </p>
   </div>
 
   <div class="precautions__questions-list">
-    <h1 class="questions-list__title">QnA</h1>
-    {% if questions %} {% for question in questions.all %}
-    <form action="" method="post" class="question--container">
-      {% csrf_token %}
-      <p class="question__body">{{ question.question_text }}</p>
-      <input type="hidden" name="_method" value="delete" />
-      <input type="hidden" value="{{ question.pk }}" name="pk" />
-      <input
-        class="question__password-input"
-        type="password"
-        name="password"
-        required
-      />
-      <button class="question__password-submit" type="submit">삭제</button>
-    </form>
-    {% endfor %} {% else %}
-    <h3 class="precautions__message-no-question">There is no question</h3>
-    {% endif %}
+    <div class="questions-list--container">
+      <h1 class="questions-list__title">QnA</h1>
+      <div class="questions-list__body">
+        {% if questions %}
+          {% for question in questions.all %}
+        <form action="" method="post" class="question--container">
+          {% csrf_token %}
+          <p class="question__body">{{ question.question_text }}</p>
+          <input type="hidden" name="_method" value="delete" />
+          <input type="hidden" value="{{ question.pk }}" name="pk" />
+          <input
+            class="question__password-input"
+            type="password"
+            name="password"
+            required
+          />
+          <button class="question__password-submit" type="submit">삭제</button>
+        </form>
+          {% endfor %}
+        {% else %}
+        <h3 class="precautions__message-no-question">There is no questions</h3>
+        {% endif %}
+      </div>
+    </div>
     <form action="" method="post" class="questions-list__ask">
       <h1 class="ask__title">Ask Questions</h1>
       {% csrf_token %}

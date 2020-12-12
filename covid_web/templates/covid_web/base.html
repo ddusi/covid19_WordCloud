@@ -12,6 +12,9 @@
       href="{% static 'css/style.css' %}"
     />
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    {% block script %}
+    
+    {% endblock %}
   </head>
   <body>
     <header class="header">
@@ -38,7 +41,9 @@
         </ul>
       </nav>
     </header>
-    {% block content %} {% endblock %}
+    {% block content %}
+    
+    {% endblock %}
     <footer class="footer">
       <div class="footer--wrapper">
         <div class="footer__website-title--container">

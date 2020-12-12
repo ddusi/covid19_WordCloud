@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import re
 import nltk
-from nltk import FreqDist
 
 from PIL import Image
 import numpy as np
@@ -11,8 +10,19 @@ from scipy.ndimage import gaussian_gradient_magnitude
 from wordcloud import WordCloud, ImageColorGenerator
 
 
-def make_cloud_helper(path):
-	# text = open(os.path.join('article.txt'), encoding="utf-8").read()
+def make_data():
+	'''
+	- crawing_data for covide19
+	- make word cloud
+	'''
+	os.system('scrapy runspider covid_web/scrapy/covid/spiders/covid_spider.py')
+	make_cloud_helper('covid_WordCloud.png')
+
+
+def make_cloud_helper(name: 'file name.png'):
+	'''
+	Create WordCloud picture .png
+	'''
 	article_pd = pd.read_csv('article.csv')
 
 	# NLTK string preprocessing
@@ -25,8 +35,7 @@ def make_cloud_helper(path):
 
 	stop_words = ['daily', 'roundup', 'update', 'july', 'sunday', 'aug', 'list', 'line']
 	name_list = [t[0] for t in tagged if t[1] != "VB" and t[0] not in stop_words and t[1] == "NN"]
-	fd_names = FreqDist(name_list)
-
+	fd_names = nltk.FreqDist(name_list)
 
 	# image dataization
 	covid_color = np.array(Image.open(os.path.join("covid_web/static", "covid_person_new.jpg")))
@@ -46,5 +55,4 @@ def make_cloud_helper(path):
 	# wc.generate(text)
 	image_colors = ImageColorGenerator(covid_color)
 	wc.recolor(color_func=image_colors)
-	wc.to_file("covid_web/static/" + path)
-
+	wc.to_file("covid_web/static/" + name)

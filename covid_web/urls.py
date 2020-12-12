@@ -1,7 +1,8 @@
 from django.urls import path
 
 from .views.question_crud_view import QuestionCRUDView
-from .views.views import home, covid_info, status, news
+from .views.views import home, covid_info, news
+from .views.status_view import status
 
 app_name = 'covid'
 urlpatterns = [

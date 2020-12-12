@@ -1,39 +1,26 @@
-{% extends 'covid_web/base.html' %} {% load static %} {% block content %}
+{% extends 'covid_web/base.html' %}
+{% load static %}
+
+{% block script %}
+{% endblock %}
+
+{% block content %}
 <section role="main" class="status--main-section">
   <div class="status__dashboard">
+    {{ world_data }}
     <h1 class="dashboard__title">COVID-19 Dashboard</h1>
+    {% if confirmation_graph %}
     <div class="dashboard__chart--container">
       <h3 class="chart__name">Sample Chart #1</h3>
-      <img
-        alt="COVID-19 Visual Map"
-        class="chart__graphic"
-        src="/static/covid_visual-map.png"
-      />
+      {{ confirmation_graph|safe }}
     </div>
     <div class="dashboard__chart--container">
       <h3 class="chart__name">Sample Chart #2</h3>
-      <img
-        alt="COVID-19 Global Cumulative Cases"
-        class="chart__graphic"
-        src="/static/covid_cumulative-cases.png"
-      />
+      {{ cumulative_deaths|safe }}
     </div>
-    <div class="dashboard__chart--container">
-      <h3 class="chart__name">Sample Chart #3</h3>
-      <img
-        alt="COVID-19 Global Cumulative Cases"
-        class="chart__graphic"
-        src="/static/covid_cumulative-cases.png"
-      />
-    </div>
-    <div class="dashboard__chart--container">
-      <h3 class="chart__name">Sample Chart #4</h3>
-      <img
-        alt="COVID-19 Visual Map"
-        class="chart__graphic"
-        src="/static/covid_visual-map.png"
-      />
-    </div>
+    {% else %}
+    <p>No graph was provided.</p>
+    {% endif %}
   </div>
 </section>
 {% endblock %}
