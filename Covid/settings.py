@@ -26,12 +26,12 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'zqsd+%&=x)&0mx!l)w)yl(04wo$feo+w0s4q2e!=&9f4ec%#pe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 APPEND_SLASH = True
 
 ALLOWED_HOSTS = [
-    '*',
+    'www.dailycovid-19updates.org/',
 ]
 
 
